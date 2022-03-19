@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace QLCuaHangVali.Controllers
 {
-    //hello every one
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
