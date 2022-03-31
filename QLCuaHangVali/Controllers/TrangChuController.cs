@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace QLCuaHangVali.Controllers
 {
-    public class ValiController : Controller
+    public class TrangChuController : Controller
     {
-        // GET: Vali
+        // GET: TrangChu
         public ActionResult Index()
         {
             return View();

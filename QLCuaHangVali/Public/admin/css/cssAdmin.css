@@ -1,0 +1,14 @@
+﻿ 
+.table {
+    text-align: center;
+}
+
+.images_Product_Admin{
+    width: 60px;
+    height:60px;
+
+}
+.form-create {
+    margin-bottom: 1rem;
+    display: flex;
+}

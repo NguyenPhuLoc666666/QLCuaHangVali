@@ -1,0 +1,47 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.VALI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@section header{
+
+    <link href="~/Public/admin/css/cssAdmin.css" rel="stylesheet" />
+    <h2>Quản lý sản phẩm</h2>
+    @Html.ActionLink("Thêm mới Vali", "Create")
+    <table class="table" border="1px">
+        <tr>
+            <th>Mã Vali</th>
+            <th>Tên Vali</th>
+            <th>Thương Hiệu </th>
+            <th>Size</th>
+            <th>Danh Mục </th>
+            <th>Hình</th>
+            <th>Số lượng tồn</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.mavali</td>
+        <td>@item.tenvali</td>
+        <td>@item.THUONGHIEU.tenthuonghieu</td>
+        <td>@item.SIZEVALI.tensize</td>
+        <td>@item.DANHMUCVALI.tendanhmuc</td>
+        <td>
+            <img class="images_Product_Admin" src="~/Content/AnhVali/@item.anhvali" />
+        </td>
+        <td>@item.soluongton</td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id = item.mavali }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.mavali }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.mavali })
+        </td>
+    </tr>
+        }
+    </table>
+}
+
+
+
+
