@@ -21,7 +21,6 @@ namespace QLCuaHangVali
         {
             Session["UserAdmin"] = "";
            
-            
         }
     }
 }

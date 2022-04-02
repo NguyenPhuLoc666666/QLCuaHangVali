@@ -1,0 +1,178 @@
+﻿@model QLCuaHangVali.Models.VALI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@section header{
+    <h2 style="text-align: center">Xóa một vali</h2>
+
+    <h3>Bạn có muốn xóa Vali này không ?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tenvali)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tenvali)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mathuonghieu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mathuonghieu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.masize)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.masize)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.madanhmuc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.madanhmuc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.anhvali)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.anhvali)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mota)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mota)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tukhoa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tukhoa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.soluongton)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.soluongton)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.gia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.gia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.giakhuyenmai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.giakhuyenmai)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ngaytao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ngaytao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.trangthai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.trangthai)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.chatlieu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.chatlieu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.kichthuoc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.kichthuoc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.thetich)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.thetich)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.banhxe)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.banhxe)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.khoa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.khoa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tienich)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tienich)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.linkvideo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.linkvideo)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+        }
+    </div>
+}

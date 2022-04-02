@@ -172,7 +172,9 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValiController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
@@ -2290,6 +2292,13 @@
     <Content Include="Areas\Admin\Views\Vali\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Vali\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuongHieu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Vali\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Details.cshtml" />
     <None Include="Models\ValiDB.dbml.layout">
       <DependentUpon>ValiDB.dbml</DependentUpon>
     </None>

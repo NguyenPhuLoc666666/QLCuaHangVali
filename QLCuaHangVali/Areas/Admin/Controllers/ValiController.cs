@@ -33,19 +33,18 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection, VALI vl)
         {
-            var mavali = collection["mavali"];
             var tenvali = collection["tenvali"];
-            var mathuonghieu = collection["mathuonghieu"];
-            var masize = collection["masize"];
-            var madanhmuc = collection["madanhmuc"];
+            var mathuonghieu = int.Parse(collection["mathuonghieu"]);
+            var masize = int.Parse(collection["masize"]);
+            var madanhmuc = int.Parse(collection["madanhmuc"]);
             var anhvali = collection["anhvali"];
             var mota = collection["mota"];
             var tukhoa = collection["tukhoa"];
-            var soluongton = collection["soluongton"];
-            var gia = collection["gia"];
-            var giakhuyenmai = collection["giakhuyenmai"];
+            var soluongton = int.Parse(collection["soluongton"]);
+            var gia = Convert.ToDecimal(collection["gia"]);
+            var giakhuyenmai = Convert.ToDecimal(collection["giakhuyenmai"]);
             var ngaytao = Convert.ToDateTime(collection["ngaytao"]);
-            var trangthai = collection["trangthai"];
+            var trangthai = Convert.ToBoolean(collection["trangthai"]);
             var chatlieu = collection["chatlieu"];
             var kichthuoc = collection["kichthuoc"];
             var thetich = collection["thetich"];
@@ -54,13 +53,12 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             var tienich = collection["tienich"];
             var linkvideo = collection["linkvideo"];
 
-            if (string.IsNullOrEmpty(mavali))
+            if (string.IsNullOrEmpty(tenvali))
             {
                 ViewData["Error"] = "Don't empty!";
             }
             else
             {
-                vl.mavali = int.Parse(mavali.ToString());
                 vl.tenvali = tenvali.ToString();
                 vl.mathuonghieu = int.Parse(mathuonghieu.ToString());
                 vl.masize = int.Parse(masize.ToString());
@@ -71,7 +69,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
                 vl.soluongton = int.Parse(soluongton.ToString());
                 vl.gia = Convert.ToDecimal(gia.ToString());
                 vl.giakhuyenmai = Convert.ToDecimal(giakhuyenmai.ToString());
-                vl.ngaytao = ngaytao;
+                vl.ngaytao = Convert.ToDateTime(ngaytao);
                 vl.trangthai = Convert.ToBoolean(trangthai);
                 vl.chatlieu = chatlieu.ToString();
                 vl.kichthuoc = kichthuoc.ToString();
@@ -99,17 +97,17 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         {
             var vl = db.VALIs.First(m => m.mavali == id);
             var tenvali = collection["tenvali"];
-            var mathuonghieu = collection["mathuonghieu"];
-            var masize = collection["masize"];
-            var madanhmuc = collection["madanhmuc"];
+            var mathuonghieu = int.Parse(collection["mathuonghieu"]);
+            var masize = int.Parse(collection["masize"]);
+            var madanhmuc = int.Parse(collection["madanhmuc"]);
             var anhvali = collection["anhvali"];
             var mota = collection["mota"];
             var tukhoa = collection["tukhoa"];
-            var soluongton = collection["soluongton"];
-            var gia = collection["gia"];
-            var giakhuyenmai = collection["giakhuyenmai"];
+            var soluongton = int.Parse(collection["soluongton"]);
+            var gia = Convert.ToDecimal(collection["gia"]);
+            var giakhuyenmai = Convert.ToDecimal(collection["giakhuyenmai"]);
             var ngaytao = Convert.ToDateTime(collection["ngaytao"]);
-            var trangthai = collection["trangthai"];
+            var trangthai = Convert.ToBoolean(collection["trangthai"]);
             var chatlieu = collection["chatlieu"];
             var kichthuoc = collection["kichthuoc"];
             var thetich = collection["thetich"];
@@ -134,7 +132,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
                 vl.soluongton = int.Parse(soluongton.ToString());
                 vl.gia = Convert.ToDecimal(gia.ToString());
                 vl.giakhuyenmai = Convert.ToDecimal(giakhuyenmai.ToString());
-                vl.ngaytao = ngaytao;
+                vl.ngaytao = Convert.ToDateTime(ngaytao);
                 vl.trangthai = Convert.ToBoolean(trangthai);
                 vl.chatlieu = chatlieu.ToString();
                 vl.kichthuoc = kichthuoc.ToString();

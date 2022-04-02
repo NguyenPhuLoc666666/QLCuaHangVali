@@ -1,8 +1,39 @@
-﻿@model IEnumerable<QLCuaHangVali.Models.VALI>
+﻿@model IEnumerable<QLCuaHangVali.Models.DANHMUCVALI>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 @section header{
-    <h2>category</h2>
+<h2 >Quản Lý Danh Mục Vali</h2>
+
+<p>
+    @Html.ActionLink("Thêm một danh mục", "Create")
+</p>
+<table border="1" class="table">
+    <tr>
+        <th>
+            Tên Danh Mục
+        </th>
+        <th>
+            Trạng Thái
+        </th>
+        <th>Chức Năng</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tendanhmuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangthai)
+        </td>
+        <td style="text-align: center;">
+            <div class="btn btn-info"> @Html.ActionLink("Sửa", "Edit", new { id = item.madanhmuc })</div>
+            <div class="btn btn-warning"> @Html.ActionLink("Xóa", "Delete", new { id = item.madanhmuc })</div>
+        </td>
+    </tr>
 }
+
+</table>}
