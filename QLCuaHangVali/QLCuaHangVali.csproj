@@ -2289,6 +2289,7 @@
     <Content Include="Areas\Admin\Views\Vali\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Vali\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Vali\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <None Include="Models\ValiDB.dbml.layout">
       <DependentUpon>ValiDB.dbml</DependentUpon>
     </None>
@@ -2315,7 +2316,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Vali\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\NguoiDung\DangKy.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />

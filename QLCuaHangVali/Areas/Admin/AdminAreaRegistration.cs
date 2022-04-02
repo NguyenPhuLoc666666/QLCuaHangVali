@@ -14,10 +14,18 @@ namespace QLCuaHangVali.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+            //login
             context.MapRoute(
                 "Admin_login",
                 "Admin/Login",
-                new { Controller = "Login", action = "Index", id = UrlParameter.Optional }
+                new { Controller = "Login", action = "Login", id = UrlParameter.Optional }
+            );
+
+            //logout
+            context.MapRoute(
+                "Admin_logout",
+                "Admin/Logout",
+                new { Controller = "Login", action = "Logout", id = UrlParameter.Optional }
             );
 
             context.MapRoute(

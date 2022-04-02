@@ -15,15 +15,23 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         {
             return View();
         }
+
+
         [HttpGet]
         public ActionResult Login()
         {
+
+            //if (Session["UserAdmin"].Equals(""))
+            //{
+            //    return RedirectToAction("Index", "Vali");
+            //}
+            ViewBag.Loi = "";
             return View();
         }
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
-            // Gán các giá trị người dùng nhập liệu cho các biến
+           
             var tendn = collection["username"];
             var matkhau = collection["password"];
             if (String.IsNullOrEmpty(tendn))
@@ -37,12 +45,11 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             else
             {
                 // Gán giá trị cho đối tượng được tạo mới (ad)
-       
                 ADMIN ad = db.ADMINs.SingleOrDefault(n => n.taikhoan == tendn && n.matkhau == matkhau);
                 if (ad != null)
                 {
                     // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
-                    Session["Taikhoanadmin"] = ad;
+                    Session["UserAdmin"] = ad;
                     return RedirectToAction("Index", "Vali");
                 }
                 else
@@ -51,6 +58,13 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
                 }
             }
             return View();
+        }
+
+        //logout
+        public ActionResult Logout()
+        {
+            Session["UserAdmin"] = "";
+            return RedirectToAction("Login","Login");
         }
     }
 }
