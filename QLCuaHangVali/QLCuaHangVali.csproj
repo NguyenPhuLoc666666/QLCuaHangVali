@@ -2065,6 +2065,10 @@
     <Content Include="Public\homepage\js\minicart.js" />
     <Content Include="Public\homepage\js\move-top.js" />
     <Content Include="Public\homepage\js\SmoothScroll.min.js" />
+    <Content Include="Public\homepage\Slider\slider1.jpg" />
+    <Content Include="Public\homepage\Slider\slider2.jpg" />
+    <Content Include="Public\homepage\Slider\slider3.jpg" />
+    <Content Include="Public\homepage\Slider\slider4.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2328,6 +2332,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\NguoiDung\DangKy.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\TrangChu\DanhMuc.cshtml" />
+    <Content Include="Views\TrangChu\ThuongHieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -157,6 +157,9 @@ label{
 }
 .logo_agile span {
     color: #FF5722;
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 .logo_agile h1 a {
     color: #000;
@@ -376,35 +379,35 @@ button.w3view-cart {
     min-height:600px;
     padding-top:8em;
 }
-/*-- carousel-slider --*/  
-.carousel .item{    
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat; 
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-	background-size:cover;	 
+/*-- carousel-slider --*/
+.carousel .item {
+    background: -webkit-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider2.jpg) no-repeat;
+    background: -moz-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider2.jpg) no-repeat;
+    background: -ms-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider2.jpg) no-repeat;
+    background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider2.jpg) no-repeat;
+    background-size: cover;
 }
-.carousel .item.item2{   
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat; 
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-	background-size:cover;	
-}   
-.carousel .item.item3{   
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat; 
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-	background-size:cover;	 
-}   
-.carousel .item.item4{        
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-	background-size:cover; 
-}  
+    .carousel .item.item2 {
+        background: -webkit-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider1.jpg) no-repeat;
+        background: -moz-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider1.jpg) no-repeat;
+        background: -ms-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider1.jpg) no-repeat;
+        background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider1.jpg) no-repeat;
+        background-size: cover;
+    }
+    .carousel .item.item3 {
+        background: -webkit-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider3.jpg) no-repeat;
+        background: -moz-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider3.jpg) no-repeat;
+        background: -ms-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider3.jpg) no-repeat;
+        background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider3.jpg) no-repeat;
+        background-size: cover;
+    }
+    .carousel .item.item4 {
+        background: -webkit-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider4.jpg) no-repeat;
+        background: -moz-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider4.jpg) no-repeat;
+        background: -ms-linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider4.jpg) no-repeat;
+        background: linear-gradient(rgba(23, 22, 23, 0), rgba(23, 22, 23, 0)), url(../Slider/slider4.jpg) no-repeat;
+        background-size: cover;
+    }  
 
 .carousel-caption h2, .carousel-caption h3 {
     font-size: 5em;

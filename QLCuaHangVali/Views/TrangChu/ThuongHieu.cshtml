@@ -1,0 +1,9 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.THUONGHIEU>
+@foreach (var item in Model)
+{
+    <li>
+        <input type="checkbox" class="checked">
+        <span class="span">@item.tenthuonghieu</span>
+    </li>
+}
+
