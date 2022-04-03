@@ -7,25 +7,21 @@
 @section header{
     <h2 style="text-align: center">Xóa thương hiệu</h2>
 
-    <h3>Bạn có chắc chắn muốn xóa thương hiệu này không ?</h3>
+    
     <div>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                <label >Tên thương hiệu</label>
-            </dt>
+            <table class="table" border="1px" style="text-align: center">
+                <tr>
+                    <th>Tên thương hiệu </th>
+                    <td> @Html.DisplayFor(model => model.tenthuonghieu)</td>
+                </tr>
+                <tr>
+                    <th>Mô tả </th>
+                    <td> @Html.DisplayFor(model => model.mota)</td>
+                </tr>
+            </table>
 
-            <dd>
-                @Html.DisplayFor(model => model.tenthuonghieu)
-            </dd>
-
-            <dt>
-                <label>Mô tả</label>
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.mota)
-            </dd>
 
         </dl>
 
@@ -36,10 +32,11 @@
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-danger" />
             </div>
+            <div style="text-align: right">
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
 
         }
     </div>
-<div>
-    @Html.ActionLink("Quay lại", "Index")
-</div>
+
 }

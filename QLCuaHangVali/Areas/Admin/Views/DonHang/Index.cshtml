@@ -1,0 +1,60 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.DONDATHANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@section header{
+
+
+    <h2 style="text-align">Quản Lý Đơn Đặt Hàng</h2>
+
+
+    <table class="table" border="1px">
+        <tr>
+            <th>
+                Mã đơn hàng
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Thanh toán
+            </th>
+            <th>
+                Ngày đặt
+            </th>
+            <th>
+                Ngày giao
+            </th>
+            <th>Chức năng</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.madonhang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.tenkhachhang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mathanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaydat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaygiao)
+        </td>
+        <td style="text-align: center;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.madonhang }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.madonhang }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.madonhang })
+        </td>
+    </tr>
+        }
+
+    </table>
+}
+

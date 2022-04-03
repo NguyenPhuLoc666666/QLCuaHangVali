@@ -5,109 +5,67 @@
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 @section header{
-    <h2>Details</h2>
+    <link href="~/Public/admin/css/cssAdmin.css" rel="stylesheet" />
+    <h2 style="text-align: center">Chi Tiết Sản Phẩm</h2>
 
     <div>
-        <h4>VALI</h4>
+
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.tenvali)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tenvali)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.mathuonghieu)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.mathuonghieu)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.masize)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.masize)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.madanhmuc)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.madanhmuc)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.anhvali)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.anhvali)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.mota)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.mota)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.tukhoa)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.tukhoa)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.soluongton)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.soluongton)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.gia)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.gia)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.giakhuyenmai)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.giakhuyenmai)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ngaytao)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ngaytao)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.trangthai)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.trangthai)
-            </dd>
-
-            <table class="table" border="1px">
+            <table class="table" border="1px" style="text-align: center">
+                <tr>
+                    <th>Tên vali </th>
+                    <td> @Html.DisplayFor(model => model.tenvali)</td>
+                </tr>
+                <tr>
+                    <th>Tên thương hiệu </th>
+                    <td> @Html.DisplayFor(model => model.THUONGHIEU.tenthuonghieu)</td>
+                </tr>
+                <tr>
+                    <th>Size </th>
+                    <td> @Html.DisplayFor(model => model.SIZEVALI.tensize)</td>
+                </tr>
+                <tr>
+                    <th>Tên danh mục  </th>
+                    <td> @Html.DisplayFor(model => model.DANHMUCVALI.tendanhmuc)</td>
+                </tr>
+                <tr>
+                    <th>Ảnh vali </th>
+                    <td>
+                        <img class="images_Product_Admin" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mô tả </th>
+                    <td> @Html.DisplayFor(model => model.mota)</td>
+                </tr>
+                <tr>
+                    <th>Từ khóa </th>
+                    <td> @Html.DisplayFor(model => model.tukhoa)</td>
+                </tr>
+                <tr>
+                    <th>Số lượng tồn </th>
+                    <td> @Html.DisplayFor(model => model.soluongton)</td>
+                </tr>
+                <tr>
+                    <th>Giá gốc </th>
+                    <td> @Html.DisplayFor(model => model.gia)</td>
+                </tr>
+                <tr>
+                    <th>Giá khuyến mãi </th>
+                    <td> @Html.DisplayFor(model => model.giakhuyenmai)</td>
+                </tr>
+                <tr>
+                    <th>Ngày nhập hàng </th>
+                    <td> @Html.DisplayFor(model => model.ngaytao)</td>
+                </tr>
+                <tr>
+                    <th>Trạng thái </th>
+                    <td> @Html.DisplayFor(model => model.trangthai)</td>
+                </tr>
                 <tr>
                     <th>Chất liệu </th>
                     <td> @Html.DisplayFor(model => model.chatlieu)</td>
@@ -136,68 +94,14 @@
 
             </table>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/@Html.DisplayFor(model=>model.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            @*<dt>
-                    @Html.DisplayNameFor(model => model.chatlieu)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.chatlieu)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.kichthuoc)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.kichthuoc)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.thetich)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.thetich)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.banhxe)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.banhxe)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.khoa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.khoa)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.tienich)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.tienich)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.linkvideo)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.linkvideo)
-                </dd>*@
 
         </dl>
 
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.mavali }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.mavali }) |
+        @Html.ActionLink("Quay về", "Index")
     </p>
 
 }

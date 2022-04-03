@@ -49,7 +49,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
                 if (ad != null)
                 {
                     // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
-                    Session["UserAdmin"] = ad;
+                    Session["UserAdmin"] = ad.taikhoan;
                     return RedirectToAction("Index", "Vali");
                 }
                 else

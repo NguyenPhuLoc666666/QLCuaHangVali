@@ -1,0 +1,52 @@
+﻿@model QLCuaHangVali.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@section header{
+<h2 style="text-align: center">Xóa Đơn Hàng </h2>
+
+ 
+<div>
+     
+    <hr />
+    <dl class="dl-horizontal">
+        <table class="table" border="1px" style="text-align: center">
+            <tr>
+                <th>Tên khách hàng </th>
+                <td> @Html.DisplayFor(model => model.KHACHHANG.tenkhachhang)</td>
+            </tr>
+            <tr>
+                <th>Thanh toán </th>
+                <td> @Html.DisplayFor(model => model.mathanhtoan)</td>
+            </tr>
+            <tr>
+                <th>Ngày đặt </th>
+                <td> @Html.DisplayFor(model => model.ngaydat)</td>
+            </tr>
+            <tr>
+                <th>Ngày giao </th>
+                <td> @Html.DisplayFor(model => model.ngaygiao)</td>
+            </tr>
+            <tr>
+                <th>Tình trạng </th>
+                <td> @Html.DisplayFor(model => model.tinhtrang)</td>
+            </tr>
+            <tr>
+                <th>Ghi chú </th>
+                <td> @Html.DisplayFor(model => model.ghichu)</td>
+            </tr>
+        </table>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay về", "Index")
+        </div>
+    }
+</div>}
