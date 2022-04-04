@@ -1,4 +1,5 @@
-﻿using QLCuaHangVali.Models;
+﻿using PagedList;
+using QLCuaHangVali.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         // GET: Admin/Category
 
         ValiDBDataContext db = new ValiDBDataContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var all_dmvl = from dmvl in db.DANHMUCVALIs select dmvl;
-            return View(all_dmvl);
+            if (page == null) page = 1;
+            var all_vl = (from vl in db.DANHMUCVALIs select vl).OrderBy(m => m.madanhmuc);
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(all_vl.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Details(int id)

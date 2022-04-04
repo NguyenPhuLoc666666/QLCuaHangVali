@@ -3,8 +3,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!-- //navigation -->
 <!-- banner -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+<link href="~/Public/homepage/css/jquery-ui1.css" rel="stylesheet" />
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators-->
     <ol class="carousel-indicators">
@@ -109,7 +112,7 @@
             </div>
             <!-- price range -->
             <div class="range">
-                <h3 class="agileits-sear-head">Phạm vi giá</h3>
+                <h3 class="agileits-sear-head">Price range</h3>
                 <ul class="dropdown-menu6">
                     <li>
 
@@ -136,7 +139,7 @@
             <!-- //food preference -->
             <!-- discounts -->
             <div class="left-side">
-                <h3 class="agileits-sear-head">Khuyến Mãi</h3>
+                <h3 class="agileits-sear-head" style=" color: #FF5722; margin-bottom: 20px; font-size: 21px;">Khuyến Mãi</h3>
                 <ul>
                     <li>
                         <input type="checkbox" class="checked">
@@ -308,7 +311,7 @@
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
-                                        <a href="single.html">@vali.tenvali</a>
+                                        <a href="@Url.Action("Details", "TrangChu",new{ id = vali.mavali } )">@vali.tenvali</a>
                                     </h4>
                                     <div class="info-product-price">
                                         <span class="item_price">@vali.giakhuyenmai VNĐ</span>
@@ -481,7 +484,7 @@
                                 <img src="~/Content/images/mk4.jpg" alt="">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
-                                        <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                        <a href="@Url.Action("Details","TrangChu")" class="link-product-add-cart">Quick View</a>
                                     </div>
                                 </div>
                                 <span class="product-new-top">New</span>
@@ -732,7 +735,7 @@
     <div class="container">
         <!-- tittle heading -->
         <h3 class="tittle-w3l">
-            Ưu đãi Đặc biệt
+            Special Offers
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -746,7 +749,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.html">
-                                <img src="~/Content/images/s1.jpg" alt="">
+                                <img src="images/s1.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -780,7 +783,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.html">
-                                <img src="~/Content/images/s4.jpg" alt="">
+                                <img src="images/s4.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -814,7 +817,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.html">
-                                <img src="~/Content/images/s2.jpg" alt="">
+                                <img src="images/s2.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -848,7 +851,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single2.html">
-                                <img src="~/Content/images/s3.jpg" alt="">
+                                <img src="images/s3.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -882,7 +885,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.html">
-                                <img src="~/Content/images/s8.jpg" alt="">
+                                <img src="images/s8.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -916,7 +919,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single2.html">
-                                <img src="~/Content/images/s6.jpg" alt="">
+                                <img src="images/s6.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -950,7 +953,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.html">
-                                <img src="~/Content/images/s5.jpg" alt="">
+                                <img src="images/s5.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -984,7 +987,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single2.html">
-                                <img src="~/Content/images/s9.jpg" alt="">
+                                <img src="images/s9.jpg" alt="">
                             </a>
                         </div>
                         <div class="product-name-w3l">
@@ -1018,4 +1021,6 @@
         </div>
     </div>
 </div>
+ 
+ 
 <!-- //special offers -->

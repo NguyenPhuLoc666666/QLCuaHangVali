@@ -26,9 +26,9 @@
 
 
             <div class="form-group form-create">
-                <label class="col-md-2">Mã thương hiệu - chú ý sửa nha Tuấn</label>
+                <label class="col-md-2">Thương hiệu - chú ý sửa nha Tuấn</label>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.mathuonghieu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.mathuonghieu , (ViewBag.CategoryID as SelectList), new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.mathuonghieu, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="form-group form-create">
                 <label class="col-md-2">Kích thước</label>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.masize, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.masize, (ViewBag.SizeID as SelectList), new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.masize, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="form-group form-create">
                 <label class="col-md-2">Danh mục</label>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.madanhmuc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.madanhmuc, (ViewBag.DMID as SelectList), new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.madanhmuc, "", new { @class = "text-danger" })
                 </div>
             </div>

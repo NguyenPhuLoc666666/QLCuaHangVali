@@ -1,4 +1,5 @@
-﻿using QLCuaHangVali.Models;
+﻿using PagedList;
+using QLCuaHangVali.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,18 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
     {
         // GET: Admin/DonHang
         ValiDBDataContext db = new ValiDBDataContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var all_kh = from kh in db.DONDATHANGs select kh;
-            return View(all_kh);
+            if (page == null) page = 1;
+            var all_vl = (from vl in db.DONDATHANGs select vl).OrderBy(m => m.madonhang);
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(all_vl.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Details(int id)
         {
-            DONDATHANG find = db.DONDATHANGs.FirstOrDefault(m => m.madonhang == id);
+            CHITIETDONHANG find = db.CHITIETDONHANGs.FirstOrDefault(m => m.madonhang == id);
             if (find == null)
                 return HttpNotFound();
             return View(find);
@@ -30,7 +34,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            CHITIETDONHANG find = db.CHITIETDONHANGs.FirstOrDefault(m => m.madonhang == id);
+            DONDATHANG find = db.DONDATHANGs.FirstOrDefault(m => m.madonhang == id);
             if (find == null)
                 return HttpNotFound();
             return View(find);

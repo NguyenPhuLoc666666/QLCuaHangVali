@@ -1,4 +1,5 @@
-﻿using QLCuaHangVali.Models;
+﻿using PagedList;
+using QLCuaHangVali.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,28 @@ using System.Web.Mvc;
 
 namespace QLCuaHangVali.Areas.Admin.Controllers
 {
-    public class ValiController : Controller
+    public class ValiController : BaseController
     {
         // GET: Admin/Vali
         ValiDBDataContext db = new ValiDBDataContext();
-        // GET: Vali
-        public ActionResult Index()
+        //lay list danh muc
+        public void SetViewBag(int? selectedId = null)
         {
-            var all_vl = from vl in db.VALIs select vl;
-            return View(all_vl);
+            List<THUONGHIEU> listThuongHieu = db.THUONGHIEUs.ToList();
+            List<SIZEVALI> listSize = db.SIZEVALIs.ToList();
+            List<DANHMUCVALI> listDanhMuc = db.DANHMUCVALIs.ToList();
+            ViewBag.DMID = new SelectList(listDanhMuc, "madanhmuc", "tendanhmuc");
+            ViewBag.SizeID = new SelectList(listSize, "masize", "tensize");
+            ViewBag.CategoryID = new SelectList(listThuongHieu, "mathuonghieu","tenthuonghieu");
+        }
+        // GET: Vali
+        public ActionResult Index(int ? page)
+        {
+            if (page == null) page = 1;
+            var all_vl = (from vl in db.VALIs select vl).OrderBy( m => m.mavali);
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(all_vl.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Details(int id)
@@ -28,6 +42,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            SetViewBag();
             return View();
         }
         [HttpPost]
@@ -90,6 +105,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             VALI find = db.VALIs.FirstOrDefault(m => m.mavali == id);
             if (find == null)
                 return HttpNotFound();
+            SetViewBag();
             return View(find);
         }
         [HttpPost]

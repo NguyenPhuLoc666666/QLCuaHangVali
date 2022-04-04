@@ -1,4 +1,5 @@
-﻿using QLCuaHangVali.Models;
+﻿using PagedList;
+using QLCuaHangVali.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         // GET: Admin/ThuongHieu
         ValiDBDataContext db = new ValiDBDataContext();
         // GET: Vali
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var all_th = from th in db.THUONGHIEUs select th;
-            return View(all_th);
+            if (page == null) page = 1;
+            var all_vl = (from vl in db.THUONGHIEUs select vl).OrderBy(m => m.mathuonghieu);
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(all_vl.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Create()

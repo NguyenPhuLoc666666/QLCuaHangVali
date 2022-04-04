@@ -1,4 +1,5 @@
-﻿@model IEnumerable<QLCuaHangVali.Models.KHACHHANG>
+﻿@model PagedList.IPagedList<QLCuaHangVali.Models.KHACHHANG>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -22,41 +23,98 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                             alt=""
-                             style="width: 45px; height: 45px; margin-right: 10px"
-                             class="rounded-circle" />
-                        <div class="ms-3">
-                            <p class="fw-bold mb-1">@Html.DisplayFor(modelItem => item.tenkhachhang)</p>
-                            <p class="text-muted mb-0">@Html.DisplayFor(modelItem => item.email)</p>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                 alt=""
+                                 style="width: 45px; height: 45px; margin-right: 10px"
+                                 class="rounded-circle" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">@Html.DisplayFor(modelItem => item.tenkhachhang)</p>
+                                <p class="text-muted mb-0">@Html.DisplayFor(modelItem => item.email)</p>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td>
-                    <p class="fw-normal mb-1">@Html.DisplayFor(modelItem => item.sodienthoai)</p>
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.ngaysinh.Value.Date)</td>
-                <td>@Html.DisplayFor(modelItem => item.taikhoankh)</td>
-                @*<td>@Html.DisplayFor(modelItem => item.matkhau)</td>*@
-                <td style="font-size: 30px;">......</td>
-                @*<td>
-                    <span class="badge badge-success rounded-pill d-inline">@Html.DisplayFor(modelItem => item.trangthai)</span>
-                </td>*@
-                <td>
-                    <span class="badge badge-success rounded-pill d-inline">
-                        Active
-                    </span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-outline-success btn-sm btn-rounded">
-                        @Html.ActionLink("Chi tiết", "Details", new { id = item.makh })
-                    </button>
-                </td>
-            </tr>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1">@Html.DisplayFor(modelItem => item.sodienthoai)</p>
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.ngaysinh)</td>
+                    <td>@Html.DisplayFor(modelItem => item.taikhoankh)</td>
+                    @*<td>@Html.DisplayFor(modelItem => item.matkhau)</td>*@
+                    <td style="font-size: 30px;">......</td>
+                    @*<td>
+                            <span class="badge badge-success rounded-pill d-inline">@Html.DisplayFor(modelItem => item.trangthai)</span>
+                        </td>*@
+                    <td>
+                        <span class="badge badge-success rounded-pill d-inline">
+                            Active
+                        </span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success btn-sm btn-rounded">
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.makh })
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+    <div>
+        <div>
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+            @Model.PageCount
+        </div>
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new
+            {
+                page = page
+            }))
+        </div>
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+    <style type="text/css">
+        #mau-nut a {
+            clear: both;
+            background-color: orange;
+            color: snow;
+        }
+
+            #mau-nut a:hover {
+                background-color: darkcyan;
+                color: snow;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var maxLength = 100;
+            $(".show-read-more").each(function () {
+                var myStr = $(this).text();
+                if ($.trim(myStr).length > maxLength) {
+                    var newStr = myStr.substring(0, maxLength);
+                    var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                    $(this).empty().html(newStr);
+
+                    $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a>');
+
+                    $(this).append('<span class="more-text">' + removedStr +
+                        '</span>');
+                }
+            });
+            $(".read-more").click(function () {
+                $(this).siblings(".more-text").contents().unwrap();
+                $(this).remove();
+            });
+        });
+    </script>
+    <style>
+        .show-read-more .more-text {
+            display: none;
+        }
+    </style>
 }

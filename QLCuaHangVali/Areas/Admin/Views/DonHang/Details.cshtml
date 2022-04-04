@@ -4,32 +4,33 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
+@section header{
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>CHITIETDONHANG</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.soluong)
+            </dt>
 
-<div>
-    <h4>CHITIETDONHANG</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.soluong)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.soluong)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.soluong)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.gia)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gia)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.gia)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.gia)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

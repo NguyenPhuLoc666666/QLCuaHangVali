@@ -33,5 +33,6 @@ namespace QLCuaHangVali.Controllers
             var ThuongHieu = from dm in db.THUONGHIEUs select dm;
             return PartialView(ThuongHieu);
         }
+        
     }
 }
