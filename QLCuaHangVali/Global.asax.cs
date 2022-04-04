@@ -20,7 +20,7 @@ namespace QLCuaHangVali
         protected void Session_Start()
         {
             Session["UserAdmin"] = "";
-           
+            Session["TaiKhoanKH"] = "";
         }
     }
 }

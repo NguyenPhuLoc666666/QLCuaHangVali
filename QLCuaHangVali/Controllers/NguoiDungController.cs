@@ -14,50 +14,114 @@ namespace QLCuaHangVali.Controllers
         [HttpGet]
         public ActionResult DangKy()
         {
-            return View();
+            return PartialView();
         }
-
         [HttpPost]
         public ActionResult DangKy(FormCollection collection, KHACHHANG kh)
         {
-            var tenKhachHang = collection["tenkhachhang"];
-            var soDienThoai = collection["sodienthoai"];
-            var email = collection["email"];
-            var diaChi = collection["diachi"];
-            var taiKhoanKH = collection["taikhoankh"];
-            var matKhau = collection["matkhau"];
-            var MatKhauXacNhan = collection["MatKhauXacNhan"];
-            var ngaySinh = String.Format("{0:MM/dd/yyyy}", collection["ngaysinh"]);
-            if (String.IsNullOrEmpty(MatKhauXacNhan))
+            //Gan cac gia tri nguoi dung nhap lieu
+            var hoten = collection["name"];
+            var tendn = collection["username"];
+            var dienthoai = collection["sodienthoai"];
+            var matkhau = collection["password"];
+            var matkhaunhaplai = collection["ConfirmPassword"];
+            var email = collection["Email"];
+            //var anhdaidien = collection["anhdaidien"];
+            //var diachi = collection["diachi"];
+            //var ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["ngaysinh"]);
+            if (String.IsNullOrEmpty(hoten))
             {
-                ViewData["NhapMKXN"] = "Phải nhập mật khẩu xác nhận!";
-
+                ViewData["Loi1"] = "Họ tên khách hàng không được để trống";
+            }
+            else if (String.IsNullOrEmpty(tendn))
+            {
+                ViewData["Loi2"] = "Phải nhập tên đăng nhập";
+            }
+            else if (String.IsNullOrEmpty(matkhau))
+            {
+                ViewData["Loi3"] = "Phải nhập mật khẩu";
+            }
+            else if (String.IsNullOrEmpty(matkhaunhaplai))
+            {
+                ViewData["Loi4"] = "Phải nhập lại mật khẩu";
+            }
+            else if (String.IsNullOrEmpty(email))
+            {
+                ViewData["Loi5"] = "Email không được bỏ trống";
+            }
+            else if (String.IsNullOrEmpty(dienthoai))
+            {
+                ViewData["Loi6"] = "Phải nhập điện thoại";
             }
             else
             {
-                if (!matKhau.Equals(MatKhauXacNhan))
+                //Gan cac gia tri cho doi tuong duoc tao moi(kh)
+                kh.tenkhachhang = hoten;
+                kh.taikhoankh = tendn;
+                kh.matkhau = matkhau;
+                kh.email = email;
+                //kh.diachi = diachi;
+                kh.sodienthoai = dienthoai;
+                //kh.ngaysinh = DateTime.Parse(ngaysinh);
+                data.KHACHHANGs.InsertOnSubmit(kh);
+                data.SubmitChanges();
+                ViewBag.Thongbao = "";
+                return PartialView("DangNhap");
+            }
+            return PartialView();
+        }
+
+        //Chức năng đăng nhập của khách hàng 
+        [HttpGet]
+        public ActionResult DangNhap()
+        {
+            ViewBag.LoiDanhNhap = "";
+            ViewBag.Thongbao = "";
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult DangNhap(FormCollection collection)
+        {
+
+            var tendn = collection["username"];
+            var matkhau = collection["password"];
+            if (String.IsNullOrEmpty(tendn))
+            {
+                ViewData["Loi1"] = "Phải Nhập Tài khoản";
+                return null;
+            }
+            else if (String.IsNullOrEmpty(matkhau))
+            {
+                ViewData["Loi2"] = "Phải nhập mật khẩu";
+                return null;
+            }
+            else
+            {
+                // Gán giá trị cho đối tượng được tạo mới (ad)
+                KHACHHANG ad = data.KHACHHANGs.SingleOrDefault(n => n.taikhoankh == tendn && n.matkhau == matkhau);
+                if (ad != null)
                 {
-                    ViewData["MatKhauGiongNhau"] = "Mật khẩu và mật khẩu xác nhận phải giống nhau";
+                    // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
+                    Session["TaiKhoanKH"] = ad.tenkhachhang;
+                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng"; // Cho nhập lại một lần nữa bởi bì lần 1 k load
+                    return PartialView();
                 }
                 else
                 {
-                    kh.tenkhachhang = tenKhachHang;
-                    kh.sodienthoai = soDienThoai;
-                    kh.email = email;
-                    kh.diachi = diaChi;
-                    kh.taikhoankh = taiKhoanKH;
-                    kh.matkhau = matKhau;              
-                    kh.ngaysinh = DateTime.Parse(ngaySinh);
-                    data.KHACHHANGs.InsertOnSubmit(kh);
-                    data.SubmitChanges();
-
-                    return RedirectToAction("Index", "Vali");
+                    ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
                 }
             }
-            return this.DangKy();
+            //ViewBag.Thongbao = ""; .............
+            return PartialView();
         }
 
-        //dang nhap
+        public ActionResult DangXuat()
+        {
+            Session["TaiKhoanKH"] = "";
+            return RedirectToAction("Index", "TrangChu");
+        }
+
+
 
     }
 }

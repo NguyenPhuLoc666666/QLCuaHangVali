@@ -177,6 +177,7 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValiController.cs" />
+    <Compile Include="Controllers\BaseUserController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2340,6 +2341,7 @@
     <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\TrangChu\DanhMuc.cshtml" />
     <Content Include="Views\TrangChu\ThuongHieu.cshtml" />
+    <Content Include="Views\NguoiDung\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

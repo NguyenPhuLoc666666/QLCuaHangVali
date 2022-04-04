@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.KHACHHANG>
+ 
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            Modal content
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn_close_login" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body modal-body-sub_agile">
+                    <div class="main-mailposi">
+                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                    </div>
+                    <div class="modal_body_left modal_body_left1">
+
+                        <h3 class="agileinfo_sign">Đăng Nhập </h3>
+                        <p>
+                            Đăng nhập ngay bây giờ, Hãy bắt đầu Mua sắm Vali của bạn. Không có tài khoản?
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                Đăng ký ngay
+                            </a>
+                        </p>
+                       
+                        <form action="" method="post">
+                            @using (Html.BeginForm("Index","TrangChu",FormMethod.Post))
+                            {
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" placeholder="Nhập tài khoản" name="username" required="">
+                                </div>
+                                <p class="check_login2">@ViewData["Loi1"]</p>
+                                <div class="styled-input">
+                                    <input type="password" placeholder="Mật khẩu" name="password" required="">
+                                </div>
+                                <h4 class="check_login1" style="color: red; font-size: 16px; text-align: center;">@ViewBag.Thongbao</h4>
+                                <p class="check_login3">@ViewData["Loi2"]</p>
+                                <input type="submit" value="Đăng Nhập" class="dangnhap">
+                            }
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+  </div>

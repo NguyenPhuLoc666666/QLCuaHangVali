@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- header-bot-->
             <div class="col-md-4 logo_agile">
                 <h1>
-                    <a href="@Url.Action("Index","TrangChu")">
+                    <a class="Reload" href="@Url.Action("Index","TrangChu")">
                         <span>Mia.vn</span>
                         @*<span>S</span>hoppy*@
                         <img src="~/Public/homepage/images/logo2.png" alt=" ">
@@ -67,15 +67,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#myModal1">
-                            <span class="fa fa-truck" aria-hidden="true"></span>Theo dõi
-                        </a>
-                    </li>
-                    <li>
                         <span class="fa fa-phone" aria-hidden="true"></span> 0392-766-630
                     </li>
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#myModal1">
+                        <a class="login" href="#" data-toggle="modal" data-target="#myModal1">
                             <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập
                         </a>
                     </li>
@@ -84,7 +79,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
                         </a>
                     </li>
+                    <li>
+                        <a href="">
+                            <img style="background-image: url('https://anhtuana2k422001.github.io/zingmp3/assets/img/imgage_interface.jpg'); width: 36px; height: 36px; border-radius: 50%; background-size: cover; float: left;" />
+                            <span class="name_user" aria-hidden="true">@Session["TaiKhoanKH"]</span>
+                        </a>
+                    </li>
                 </ul>
+
                 <!-- //header lists -->
                 <!-- search -->
                 <div class="agileits_search">
@@ -113,6 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="clearfix"></div>
         </div>
+        <a style="float: right" class="btn btn-info" href="@Url.Action("DangXuat","NguoiDung")">Đăng Xuất</a>
     </div>
     <!-- shop locator (popup) -->
     <!-- Button trigger modal(shop-locator) -->
@@ -494,86 +497,87 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //shop locator (popup) -->
     <!-- signin Model -->
     <!-- Modal1 -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body modal-body-sub_agile">
-                    <div class="main-mailposi">
-                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+    @*<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                Modal content
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal_body_left modal_body_left1">
-                        <h3 class="agileinfo_sign">Sign In </h3>
-                        <p>
-                            Sign In now, Let's start your Grocery Shopping. Don't have an account?
-                            <a href="#" data-toggle="modal" data-target="#myModal2">
-                                Sign Up Now
-                            </a>
-                        </p>
-                        <form action="#" method="post">
-                            <div class="styled-input agile-styled-input-top">
-                                <input type="text" placeholder="User Name" name="Name" required="">
-                            </div>
-                            <div class="styled-input">
-                                <input type="password" placeholder="Password" name="password" required="">
-                            </div>
-                            <input type="submit" value="Sign In">
-                        </form>
+                    <div class="modal-body modal-body-sub_agile">
+                        <div class="main-mailposi">
+                            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                        </div>
+                        <div class="modal_body_left modal_body_left1">
+                            <h3 class="agileinfo_sign">Sign In </h3>
+                            <p>
+                                Sign In now, Let's start your Grocery Shopping. Don't have an account?
+                                <a href="#" data-toggle="modal" data-target="#myModal2">
+                                    Sign Up Now
+                                </a>
+                            </p>
+                            <form action="#" method="post">
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" placeholder="User Name" name="Name" required="">
+                                </div>
+                                <div class="styled-input">
+                                    <input type="password" placeholder="Password" name="password" required="">
+                                </div>
+                                <input type="submit" value="Sign In">
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
+                //Modal content
             </div>
-            <!-- //Modal content-->
-        </div>
-    </div>
-    <!-- //Modal1 -->
+        </div>*@
+    @Html.Action("DangNhap", "NguoiDung")
     <!-- //signin Model -->
     <!-- signup Model -->
     <!-- Modal2 -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body modal-body-sub_agile">
-                    <div class="main-mailposi">
-                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
-                    </div>
-                    <div class="modal_body_left modal_body_left1">
-                        <h3 class="agileinfo_sign">Sign Up</h3>
-                        <p>
-                            Come join the Grocery Shoppy! Let's set up your Account.
-                        </p>
-                        <form action="#" method="post">
-                            <div class="styled-input agile-styled-input-top">
-                                <input type="text" placeholder="Name" name="Name" required="">
-                            </div>
-                            <div class="styled-input">
-                                <input type="email" placeholder="E-mail" name="Email" required="">
-                            </div>
-                            <div class="styled-input">
-                                <input type="password" placeholder="Password" name="password" id="password1" required="">
-                            </div>
-                            <div class="styled-input">
-                                <input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
-                            </div>
-                            <input type="submit" value="Sign Up">
-                        </form>
-                        <p>
-                            <a href="#">By clicking register, I agree to your terms</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- //Modal content-->
+    @Html.Action("DangKy", "NguoiDung")
+    <!--<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog">-->
+    <!-- Modal content-->
+    <!--<div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-    </div>
+        <div class="modal-body modal-body-sub_agile">
+            <div class="main-mailposi">
+                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+            </div>
+            <div class="modal_body_left modal_body_left1">
+                <h3 class="agileinfo_sign">Sign Up</h3>
+                <p>
+                    Come join the Grocery Shoppy! Let's set up your Account.
+                </p>
+                <form action="#" method="post">
+                    <div class="styled-input agile-styled-input-top">
+                        <input type="text" placeholder="Name" name="Name" required="">
+                    </div>
+                    <div class="styled-input">
+                        <input type="email" placeholder="E-mail" name="Email" required="">
+                    </div>
+                    <div class="styled-input">
+                        <input type="password" placeholder="Password" name="password" id="password1" required="">
+                    </div>
+                    <div class="styled-input">
+                        <input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
+                    </div>
+                    <input type="submit" value="Sign Up">
+                </form>
+                <p>
+                    <a href="#">By clicking register, I agree to your terms</a>
+                </p>
+            </div>
+        </div>
+    </div>-->
+    <!-- //Modal content-->
+    <!--</div>
+    </div>-->
     <!-- //Modal2 -->
     <!-- //signup Model -->
     <!-- //header-bot -->
@@ -1175,9 +1179,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!-- Large modal -->
-    <!-- <script>
-        $('#').modal('show');
-    </script> -->
+    <script>
+        /*  $('#').modal('show');*/
+    </script>
     <!-- //popup modal (for signin & signup)-->
     <!-- cart-js -->
     @*<script src="js/minicart.js"></script>*@
@@ -1313,7 +1317,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/Public/homepage/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
+    <script>
+        const $ = document.querySelector.bind(document); // Lấy 1 element
+        const $$ = document.querySelectorAll.bind(document); // Lấy nhiều element
 
+        const name_user = $('.name_user');
+        const login = $('.login');
+        const dangnhap = $(".dangnhap");
+        const info1 = $('.check_login1');
+        const btn_close = $(".btn_close_login");
+
+
+        // Nếu đăng nhậ thành công thì xóa thông báo để khỏi hiện trang login bến dưới
+        if (name_user.textContent != "") {
+            info1.innerText = "";
+        }
+
+        // Nếu đăng nhập sai thì hiện lại tran login
+        if (info1.textContent == "Tên đăng nhập hoặc mật khẩu không đúng") {
+            login.click();
+        }
+
+
+        // Nếu đóng thì xóa thông báo 
+        btn_close.onclick = function () {
+            info1.innerText = "";
+        }
+
+          //function reloadVali() {
+                //    window.location.reload();
+                //}
+
+    </script>
 
 </body>
 
