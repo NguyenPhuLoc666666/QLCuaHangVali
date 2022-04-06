@@ -1,0 +1,452 @@
+﻿@model QLCuaHangVali.Models.VALI
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <title>Shop Vali - Nhóm ... </title>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--//tags -->
+
+    <link href="~/Public/homepage/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Public/homepage/css/style.css" rel="stylesheet" />
+    <link href="~/Public/homepage/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Public/homepage/css/main.css" rel="stylesheet" />
+
+
+
+    <!--pop-up-box-->
+    @*<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />*@
+    <link href="~/Public/homepage/css/popuo-box.css" rel="stylesheet" />
+    <!--//pop-up-box-->
+    <!-- price range -->
+    @*<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">*@
+    <link href="~/Public/homepage/css/jquery-ui1.css" rel="stylesheet" />
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+</head>
+
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <h3 class="tittle-w3l">
+            Chi tiết sản phẩm
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <div class="col-md-5 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                            <div class="thumb-image">
+                                <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                            <div class="thumb-image">
+                                <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                            <div class="thumb-image">
+                                <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 single-right-left simpleCart_shelfItem">
+            <h3>@Html.DisplayFor(model => model.tenvali)</h3>
+            <div class="rating1">
+                <span class="starRating">
+                    <input id="rating5" type="radio" name="rating" value="5" checked="">
+                    <label for="rating5">5</label>
+                    <input id="rating4" type="radio" name="rating" value="4">
+                    <label for="rating4">4</label>
+                    <input id="rating3" type="radio" name="rating" value="3">
+                    <label for="rating3">3</label>
+                    <input id="rating2" type="radio" name="rating" value="2">
+                    <label for="rating2">2</label>
+                    <input id="rating1" type="radio" name="rating" value="1">
+                    <label for="rating1">1</label>
+                </span>
+            </div>
+            <p>
+                <span class="item_price">@Html.DisplayFor(model => model.giakhuyenmai) VNĐ</span>
+                <del>@Html.DisplayFor(model => model.gia) VNĐ</del>
+                <label>Giao hàng miễn phí</label>
+            </p>
+            <div class="single-infoagile">
+                <ul>
+                    <li>
+                        Tiền mặt khi giao hàng đủ điều kiện.
+                    </li>
+                    <li>
+                        Tốc độ vận chuyển đến giao hàng.
+                    </li>
+                    <li>
+                        Bán và hoàn thành bởi Supple Tek (3,6 trên 5 | 8 xếp hạng).
+                    </li>
+                    <li>
+                        1 ưu đãi từ
+                        <span class="item_price">@Html.DisplayFor(model => model.giakhuyenmai) VNĐ</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="product-single-w3l">
+                <p>
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>Đây là một sản phẩm dành cho người có
+                    <label>sở thích</label> đi du lịch.
+                </p>
+                <ul>
+                    <li>
+                        Công nghệ tích hợp cổng USB với pin sạc dự phòng tiên tiến, duy trì năng lượng cho các thiết bị điện tử của bạn
+                    </li>
+                    <li>
+                        Trang bị khóa đôi chống rạch ngăn kẻ gian lấy cắp hành lý, tích hợp ngăn kéo nới rộng diện tích rất tiện lợi
+                    </li>
+                    <li>
+                        Chất liệu cao cấp bảo vệ vali tối đa, màu sắc rõ nét cùng bề mặt vân nhám chống trầy xước giúp vali luôn như mới
+                    </li>
+                    <li>
+                        Được làm từ hợp kim nhôm chống rỉ chắc chắn, dễ dàng thay đổi chiều cao theo nhiều nấc phù hợp mọi đối tượng
+                    </li>
+                </ul>
+                <p>
+                    <i class="fa fa-refresh" aria-hidden="true"></i>Bảo hành trọn đời
+                    <label>trên cả khắp nước.</label>
+                </p>
+            </div>
+            <div class="occasion-cart">
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="#" method="post">
+                        <fieldset>
+                            <input type="hidden" name="cmd" value="_cart" />
+                            <input type="hidden" name="add" value="1" />
+                            <input type="hidden" name="business" value=" " />
+                            <input type="hidden" name="item_name" value="@Html.DisplayFor(model => model.tenvali)" />
+                            <input type="hidden" name="amount" value="@Html.DisplayFor(model => model.giakhuyenmai)" />
+                            <input type="hidden" name="discount_amount" value="1.00" />
+                            <input type="hidden" name="currency_code" value="VND" />
+                            <input type="hidden" name="return" value=" " />
+                            <input type="hidden" name="cancel_return" value=" " />
+                            <input type="submit" name="submit" value="Thêm vào giở hàng" class="button" />
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<div class="featured-section" id="projects">
+    <div class="container">
+        <h3 class="tittle-w3l">
+            Xem thêm
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <div class="content-bottom-in">
+            <ul id="flexiselDemo1">
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single.html">Aashirvaad, 5g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$220.00</h6>
+                                <p>Save $40.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Aashirvaad, 5g" />
+                                        <input type="hidden" name="amount" value="220.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single.html">Kissan Tomato Ketchup, 950g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$99.00</h6>
+                                <p>Save $20.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Kissan Tomato Ketchup, 950g" />
+                                        <input type="hidden" name="amount" value="99.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single.html">
+                                <<img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single.html">Madhur Pure Sugar, 1g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$69.00</h6>
+                                <p>Save $20.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Madhur Pure Sugar, 1g" />
+                                        <input type="hidden" name="amount" value="69.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single2.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single2.html">Surf Excel Liquid, 1.02L</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$187.00</h6>
+                                <p>Save $30.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Surf Excel Liquid, 1.02L" />
+                                        <input type="hidden" name="amount" value="187.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single.html">Cadbury Choclairs, 655.5g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$160.00</h6>
+                                <p>Save $60.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Cadbury Choclairs, 655.5g" />
+                                        <input type="hidden" name="amount" value="160.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single2.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single2.html">Fair & Lovely, 80 g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$121.60</h6>
+                                <p>Save $30.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Fair & Lovely, 80 g" />
+                                        <input type="hidden" name="amount" value="121.60" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single.html">Sprite, 2.25L (Pack of 2)</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$180.00</h6>
+                                <p>Save $30.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Sprite, 2.25L (Pack of 2)" />
+                                        <input type="hidden" name="amount" value="180.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="w3l-specilamk">
+                        <div class="speioffer-agile">
+                            <a href="single2.html">
+                                <img style="width: 220px; height: 220px" src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" alt="">
+                            </a>
+                        </div>
+                        <div class="product-name-w3l">
+                            <h4>
+                                <a href="single2.html">Lakme Eyeconic Kajal, 0.35 g</a>
+                            </h4>
+                            <div class="w3l-pricehkj">
+                                <h6>$153.00</h6>
+                                <p>Save $40.00</p>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <input type="hidden" name="cmd" value="_cart" />
+                                        <input type="hidden" name="add" value="1" />
+                                        <input type="hidden" name="business" value=" " />
+                                        <input type="hidden" name="item_name" value="Lakme Eyeconic Kajal, 0.35 g" />
+                                        <input type="hidden" name="amount" value="153.00" />
+                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="return" value=" " />
+                                        <input type="hidden" name="cancel_return" value=" " />
+                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

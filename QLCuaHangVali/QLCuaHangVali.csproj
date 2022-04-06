@@ -184,12 +184,14 @@
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValiController.cs" />
     <Compile Include="Controllers\BaseUserController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ValiDB.designer.cs">
@@ -255,6 +257,22 @@
     <Content Include="Content\AnhVali\1_vali4_xam3.jpg" />
     <Content Include="Content\AnhVali\1_vali4_xam4.jpg" />
     <Content Include="Content\AnhVali\1_vali4_xam5.jpg" />
+    <Content Include="Content\AnhVali\2_vali1.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Den1.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Den2.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Den3.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Den4.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Den5.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Vang1.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Vang2.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Vang3.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Vang4.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_Vang5jpg.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_XanhLa1.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_XanhLa2.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_XanhLa3.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_XanhLa4.jpg" />
+    <Content Include="Content\AnhVali\2_vali1_XanhLa5.jpg" />
     <Content Include="Content\AnhVali\slider\slider1.jpg" />
     <Content Include="Content\AnhVali\slider\slider2.jpg" />
     <Content Include="Content\AnhVali\slider\slider3.jpg" />
@@ -1971,6 +1989,7 @@
     <Content Include="Public\homepage\css\flexslider.css" />
     <Content Include="Public\homepage\css\font-awesome.css" />
     <Content Include="Public\homepage\css\jquery-ui1.css" />
+    <Content Include="Public\homepage\css\main.css" />
     <Content Include="Public\homepage\css\popuo-box.css" />
     <Content Include="Public\homepage\css\style.css" />
     <Content Include="Public\homepage\fonts\fontawesome-webfont.svg" />
@@ -2071,9 +2090,12 @@
     <Content Include="Public\homepage\js\jquery.flexisel.js" />
     <Content Include="Public\homepage\js\jquery.flexslider.js" />
     <Content Include="Public\homepage\js\jquery.magnific-popup.js" />
+    <Content Include="Public\homepage\js\main.js" />
     <Content Include="Public\homepage\js\minicart.js" />
     <Content Include="Public\homepage\js\move-top.js" />
     <Content Include="Public\homepage\js\SmoothScroll.min.js" />
+    <Content Include="Public\homepage\Slider\banner.jpg" />
+    <Content Include="Public\homepage\Slider\banner2.jpg" />
     <Content Include="Public\homepage\Slider\slider1.jpg" />
     <Content Include="Public\homepage\Slider\slider2.jpg" />
     <Content Include="Public\homepage\Slider\slider3.jpg" />
@@ -2349,6 +2371,12 @@
     <Content Include="Views\TrangChu\DanhMuc.cshtml" />
     <Content Include="Views\TrangChu\ThuongHieu.cshtml" />
     <Content Include="Views\NguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\TrangChu\DanhMucVali.cshtml" />
+    <Content Include="Views\TrangChu\Details.cshtml" />
+    <Content Include="Views\TrangChu\GioHang.cshtml" />
+    <Content Include="Views\TrangChu\LienHe.cshtml" />
+    <Content Include="Views\TrangChu\PageVali.cshtml" />
+    <Content Include="Views\TrangChu\Xacnhandonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

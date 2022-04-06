@@ -1,0 +1,75 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.LIENHE>
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- //page -->
+<!-- contact page -->
+<div class="contact-w3l">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Liên Hệ Với Chúng Tôi
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <!-- contact -->
+        <div class="contact agileits">
+            <div class="contact-agileinfo">
+                <div class="contact-form wthree">
+                    <form action="#" method="post">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="">
+                                <input type="text" name="name" placeholder="Họ và tên" required="">
+                            </div>
+                            <div class="">
+                                <input class="text" type="text" name="subject" placeholder="Tiêu đề" required="">
+                            </div>
+                            <div class="">
+                                <input class="email" type="text" name="sodienthoai" placeholder="SỐ điện thoại" required="">
+                            </div>
+                            <div class="">
+                                <input class="email" type="email" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="">
+                                <textarea placeholder="Nội dung" name="message" required=""></textarea>
+                            </div>
+                            <input type="submit" value="Gửi">
+                        }
+                    </form>
+                </div>
+                <div class="contact-right wthree">
+                    <div class="col-xs-7 contact-text w3-agileits">
+                        <h4>Liên hệ :</h4>
+                        <p>
+                            <i class="fa fa-map-marker"></i> Đại học Hutech Khu Công nghệ Cao Quận 9
+                        </p>
+                        <p>
+                            <i class="fa fa-phone"></i> Số điện thoại : 333 222 3333
+                        </p>
+                        <p>
+                            <i class="fa fa-envelope-o"></i> Email :
+                            <a href="mailto:example@mail.com">DaiHocHutech@gmail.com</a>
+                        </p>
+                    </div>
+                    <div class="col-xs-5 contact-agile">
+                        <img src="images/contact2.jpg" alt="">
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- //contact -->
+    </div>
+</div>
+<!-- map -->
+<div class="map w3layouts">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4205948965696!2d106.78291401425699!3d10.855580060697397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276e7ea103df%3A0xb6cf10bb7d719327!2zxJDhuqFpIGjhu41jIEh1dGVjaCBLaHUgQ8O0bmcgbmdo4buHIGNhbw!5e0!3m2!1svi!2s!4v1649051168306!5m2!1svi!2s"
+            allowfullscreen></iframe>
+</div>

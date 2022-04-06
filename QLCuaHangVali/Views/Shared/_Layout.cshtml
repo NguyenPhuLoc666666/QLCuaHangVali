@@ -13,7 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -22,11 +22,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
     </script>
+
     <!--//tags -->
     <link href="~/Public/homepage/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Public/homepage/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Public/homepage/css/style.css" rel="stylesheet" />
+    <link href="~/Public/homepage/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Public/homepage/css/main.css" rel="stylesheet" />
     <!--pop-up-box-->
     @*<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />*@
     <link href="~/Public/homepage/css/popuo-box.css" rel="stylesheet" />
@@ -36,6 +39,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="~/Public/homepage/css/jquery-ui1.css" rel="stylesheet" />
     <!-- fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -79,11 +84,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="UserName_drop">
+                        <a class="info_username">
                             <img style="background-image: url('https://anhtuana2k422001.github.io/zingmp3/assets/img/imgage_interface.jpg'); width: 36px; height: 36px; border-radius: 50%; background-size: cover; float: left;" />
-                            <span class="name_user" aria-hidden="true">@Session["TaiKhoanKH"]</span>
+                            <span style="font-size: 14px" class="name_user" aria-hidden="true">@Session["TaiKhoanKH"]</span>
                         </a>
+                        <div class="dropdown_user">
+                            <a class="dropdown-item_user_icon">
+                                <span class="fa fa-close icon_user" aria-hidden="true"></span>
+                            </a>
+                            <a class="dropdown-item_user" href="#">Hồ Sơ</a>
+                            <a class="dropdown-item_user" href="#">Tài Khoản</a>
+                            <a class="dropdown-item_user" href="#">Cài đặt</a>
+                            <a class="dropdown-item_user" href="@Url.Action("DangXuat","NguoiDung")">Đăng Xuất</a>
+                        </div>
                     </li>
                 </ul>
 
@@ -115,7 +129,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="clearfix"></div>
         </div>
-        <a style="float: right" class="btn btn-info" href="@Url.Action("DangXuat","NguoiDung")">Đăng Xuất</a>
     </div>
     <!-- shop locator (popup) -->
     <!-- Button trigger modal(shop-locator) -->
@@ -585,9 +598,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="ban-top">
         <div class="container">
             <div class="agileits-navi_search">
-                <form action="#" method="post">
+                <form action="~/Views/TrangChu/DanhMucVali.cshtml" method="post">
                     <select id="agileinfo-nav_search" name="agileinfo_search" required="">
-                        <option value="">Danh mục sản phẩm</option>
+                        <option class="danhmucsp" value="">Danh mục sản phẩm</option>
                         @Html.Action("DanhMuc", "TrangChu")
                     </select>
                 </form>
@@ -609,13 +622,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="index.html">
+                                    <a class="nav-stylehead" href="@Url.Action("Index","TrangChu")">
                                         Trang chủ
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="#">Vali</a>
+                                    <a class="nav-stylehead" href="@Url.Action("PageVali","TrangChu")">Vali</a>
                                 </li>
                                 <li class="">
                                     <a class="nav-stylehead" href="#">Tin Khuyến mãi</a>
@@ -769,7 +782,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </ul>
                                     </li>*@
                                 <li class="">
-                                    <a class="nav-stylehead" href="contact.html">Liên Hệ</a>
+                                    <a class="nav-stylehead" href="@Url.Action("LienHe","TrangChu")">Liên Hệ</a>
                                 </li>
                             </ul>
                         </div>
@@ -785,7 +798,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="footer-top">
         <div class="container-fluid">
             <div class="col-xs-8 agile-leftmk">
-                <h2> 30 thương hiệu nổi bật</h2>
+                <h2>Mia với 30 thương hiệu nổi bật</h2>
                 <p>Giao hàng miễn phí cho đơn hàng đầu tiên của bạn!</p>
                 <form action="#" method="post">
                     <input type="email" placeholder="E-mail" name="email" required="">
@@ -820,7 +833,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="fa fa-map-marker" aria-hidden="true"></span>
                     </div>
                     <div class="col-xs-8 text-form-footer">
-                        <h3>Track Your Order</h3>
+                        <h3>Theo dõi đơn hàng của bạn</h3>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -829,7 +842,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="fa fa-refresh" aria-hidden="true"></span>
                     </div>
                     <div class="col-xs-8 text-form-footer">
-                        <h3>Free & Easy Returns</h3>
+                        <h3>Trả hàng miễn phí và dễ dàng</h3>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -838,7 +851,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="fa fa-times" aria-hidden="true"></span>
                     </div>
                     <div class="col-xs-8 text-form-footer">
-                        <h3>Online cancellation </h3>
+                        <h3>Hủy trực tuyến</h3>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -848,59 +861,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- footer third section -->
             <div class="footer-info w3-agileits-info">
                 <!-- footer categories -->
-                <div class="col-sm-5 address-right">
-                    <div class="col-xs-6 footer-grids">
-                        <h3>Categories</h3>
+                <div class="col-sm-3 address-right">
+                    <div class="col-xs-12 footer-grids">
+                        <h3>DANH MỤC</h3>
                         <ul>
-                            <li>
-                                <a href="product.html">Grocery</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Fruits</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Soft Drinks</a>
-                            </li>
-                            <li>
-                                <a href="product2.html">Dishwashers</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Biscuits & Cookies</a>
-                            </li>
-                            <li>
-                                <a href="product2.html">Baby Diapers</a>
-                            </li>
+                            @Html.Action("DanhMuc", "TrangChu")
+                            @*<li>
+                                    <a href="product.html">Grocery</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Fruits</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Soft Drinks</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Dishwashers</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Biscuits & Cookies</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Baby Diapers</a>
+                                </li>*@
                         </ul>
                     </div>
-                    <div class="col-xs-6 footer-grids agile-secomk">
-                        <ul>
-                            <li>
-                                <a href="product.html">Snacks & Beverages</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Bread & Bakery</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Sweets</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Chocolates & Biscuits</a>
-                            </li>
-                            <li>
-                                <a href="product2.html">Personal Care</a>
-                            </li>
-                            <li>
-                                <a href="product.html">Dried Fruits & Nuts</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @*<div class="col-xs-6 footer-grids agile-secomk">
+                            <ul>
+                                <li>
+                                    <a href="product.html">Snacks & Beverages</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Bread & Bakery</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Sweets</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Chocolates & Biscuits</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Personal Care</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Dried Fruits & Nuts</a>
+                                </li>
+                            </ul>
+                        </div>*@
                     <div class="clearfix"></div>
                 </div>
                 <!-- //footer categories -->
                 <!-- quick links -->
-                <div class="col-sm-5 address-right">
+                <div class="col-sm-6 address-right">
                     <div class="col-xs-6 footer-grids">
-                        <h3>Quick Links</h3>
+                        <h3>VỀ MIA</h3>
                         <ul>
                             <li>
                                 <a href="about.html">About Us</a>
@@ -923,7 +937,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     <div class="col-xs-6 footer-grids">
-                        <h3>Get in Touch</h3>
+                        <h3>LIÊN HỆ</h3>
                         <ul>
                             <li>
                                 <i class="fa fa-map-marker"></i> 123 Sebastian, USA.
@@ -943,8 +957,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <!-- //quick links -->
                 <!-- social icons -->
-                <div class="col-sm-2 footer-grids  w3l-socialmk">
-                    <h3>Follow Us on</h3>
+                <div class="col-sm-3 footer-grids  w3l-socialmk">
+                    <h3>THEO DÕI</h3>
                     <div class="social">
                         <ul>
                             <li>
@@ -965,7 +979,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     <div class="agileits_app-devices">
-                        <h5>Download the App</h5>
+                        <h5>Tải app</h5>
                         <a href="#">
                             <img src="~/Public/homepage/images/1.png" alt="">
                         </a>
@@ -984,9 +998,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="sub-some">
                     <h5>Mua sắm Vali trực tuyến</h5>
                     <p>
-                        Order online. All your favourite products from the low price online supermarket for grocery home delivery in Delhi,
-                        Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali, Aashirvaad, Pampers, Maggi,
-                        Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and others.
+                        Đặt hàng trực tuyến. Tất cả các sản phẩm yêu thích của bạn từ siêu thị trực tuyến giá rẻ để giao hàng tận nhà ở Tp HCM, Hà Nội, Vinh và các thành phố khác ở Việt Nam
                     </p>
                 </div>
                 <div class="sub-some">
@@ -1157,6 +1169,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- js-files -->
     <!-- jquery -->
     @*<script src="js/jquery-2.1.4.min.js"></script>*@
+
+
     <script src="~/Public/homepage/js/jquery-2.1.4.min.js"></script>
     <!-- //jquery -->
     <!-- popup modal (for signin & signup)-->
@@ -1185,6 +1199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //popup modal (for signin & signup)-->
     <!-- cart-js -->
     @*<script src="js/minicart.js"></script>*@
+
     <script src="~/Public/homepage/js/minicart.js"></script>
     <script>
         paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
@@ -1200,8 +1215,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 total += items[i].get('quantity');
             }
 
-            if (total < 3) {
-                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            if (total < 1) {
+                alert('Số lượng đặt hàng tối thiểu là 1. Vui lòng thêm nhiều hơn vào giỏ hàng của bạn trước khi thanh toán');
                 evt.preventDefault();
             }
         });
@@ -1229,6 +1244,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //price range (top products) -->
     <!-- flexisel (for special offers) -->
     @*<script src="js/jquery.flexisel.js"></script>*@
+
     <script src="~/Public/homepage/js/jquery.flexisel.js"></script>
     <script>
         $(window).load(function () {
@@ -1277,11 +1293,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!-- //password-script -->
     <!-- smoothscroll -->
+    @*<script src="~/Public/homepage/js/main.js"></script>*@
     <script src="~/Public/homepage/js/SmoothScroll.min.js"></script>
 
     <!-- //smoothscroll -->
     <!-- start-smooth-scrolling -->
     <script src="~/Public/homepage/js/move-top.js"></script>
+
     <script src="~/Public/homepage/js/easing.js"></script>
     <script>
         jQuery(document).ready(function ($) {
@@ -1311,45 +1329,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
 
         });
+
     </script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- for bootstrap working -->
     <script src="~/Public/homepage/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
-    @*<script>
-        const $ = document.querySelector.bind(document); // Lấy 1 element
-        const $$ = document.querySelectorAll.bind(document); // Lấy nhiều element
+ 
 
-        const name_user = $('.name_user');
-        const login = $('.login');
-        const dangnhap = $(".dangnhap");
-        const info1 = $('.check_login1');
-        const btn_close = $(".btn_close_login");
-
-
-        // Nếu đăng nhậ thành công thì xóa thông báo để khỏi hiện trang login bến dưới
-        if (name_user.textContent != "") {
-            info1.innerText = "";
-        }
-
-        // Nếu đăng nhập sai thì hiện lại tran login
-        if (info1.textContent == "Tên đăng nhập hoặc mật khẩu không đúng") {
-            login.click();
-        }
-
-
-        // Nếu đóng thì xóa thông báo 
-        btn_close.onclick = function () {
-            info1.innerText = "";
-        }
-
-          //function reloadVali() {
-                //    window.location.reload();
-                //}
-
-    </script>*@
 
 </body>
 
 </html>
+
