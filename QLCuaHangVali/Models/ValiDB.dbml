@@ -114,20 +114,20 @@
       <Column Name="ngayketthuc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.THUONGHIEU" Member="THUONGHIEUs">
-    <Type Name="THUONGHIEU">
-      <Column Name="mathuonghieu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tenthuonghieu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="mota" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Association Name="THUONGHIEU_VALI" Member="VALIs" ThisKey="mathuonghieu" OtherKey="mathuonghieu" Type="VALI" />
-    </Type>
-  </Table>
   <Table Name="dbo.SIZEVALI" Member="SIZEVALIs">
     <Type Name="SIZEVALI">
       <Column Name="masize" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="tensize" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="mota" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="SIZEVALI_VALI" Member="VALIs" ThisKey="masize" OtherKey="masize" Type="VALI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THUONGHIEU" Member="THUONGHIEUs">
+    <Type Name="THUONGHIEU">
+      <Column Name="mathuonghieu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tenthuonghieu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="mota" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="THUONGHIEU_VALI" Member="VALIs" ThisKey="mathuonghieu" OtherKey="mathuonghieu" Type="VALI" />
     </Type>
   </Table>
   <Table Name="dbo.VALI" Member="VALIs">

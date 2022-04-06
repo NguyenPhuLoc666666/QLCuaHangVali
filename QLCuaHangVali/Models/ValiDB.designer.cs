@@ -63,12 +63,12 @@ namespace QLCuaHangVali.Models
     partial void InsertPHIEUKHUYENMAI(PHIEUKHUYENMAI instance);
     partial void UpdatePHIEUKHUYENMAI(PHIEUKHUYENMAI instance);
     partial void DeletePHIEUKHUYENMAI(PHIEUKHUYENMAI instance);
-    partial void InsertTHUONGHIEU(THUONGHIEU instance);
-    partial void UpdateTHUONGHIEU(THUONGHIEU instance);
-    partial void DeleteTHUONGHIEU(THUONGHIEU instance);
     partial void InsertSIZEVALI(SIZEVALI instance);
     partial void UpdateSIZEVALI(SIZEVALI instance);
     partial void DeleteSIZEVALI(SIZEVALI instance);
+    partial void InsertTHUONGHIEU(THUONGHIEU instance);
+    partial void UpdateTHUONGHIEU(THUONGHIEU instance);
+    partial void DeleteTHUONGHIEU(THUONGHIEU instance);
     partial void InsertVALI(VALI instance);
     partial void UpdateVALI(VALI instance);
     partial void DeleteVALI(VALI instance);
@@ -192,19 +192,19 @@ namespace QLCuaHangVali.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<THUONGHIEU> THUONGHIEUs
-		{
-			get
-			{
-				return this.GetTable<THUONGHIEU>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SIZEVALI> SIZEVALIs
 		{
 			get
 			{
 				return this.GetTable<SIZEVALI>();
+			}
+		}
+		
+		public System.Data.Linq.Table<THUONGHIEU> THUONGHIEUs
+		{
+			get
+			{
+				return this.GetTable<THUONGHIEU>();
 			}
 		}
 		
@@ -2454,144 +2454,6 @@ namespace QLCuaHangVali.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.THUONGHIEU")]
-	public partial class THUONGHIEU : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _mathuonghieu;
-		
-		private string _tenthuonghieu;
-		
-		private string _mota;
-		
-		private EntitySet<VALI> _VALIs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnmathuonghieuChanging(int value);
-    partial void OnmathuonghieuChanged();
-    partial void OntenthuonghieuChanging(string value);
-    partial void OntenthuonghieuChanged();
-    partial void OnmotaChanging(string value);
-    partial void OnmotaChanged();
-    #endregion
-		
-		public THUONGHIEU()
-		{
-			this._VALIs = new EntitySet<VALI>(new Action<VALI>(this.attach_VALIs), new Action<VALI>(this.detach_VALIs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mathuonghieu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int mathuonghieu
-		{
-			get
-			{
-				return this._mathuonghieu;
-			}
-			set
-			{
-				if ((this._mathuonghieu != value))
-				{
-					this.OnmathuonghieuChanging(value);
-					this.SendPropertyChanging();
-					this._mathuonghieu = value;
-					this.SendPropertyChanged("mathuonghieu");
-					this.OnmathuonghieuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenthuonghieu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string tenthuonghieu
-		{
-			get
-			{
-				return this._tenthuonghieu;
-			}
-			set
-			{
-				if ((this._tenthuonghieu != value))
-				{
-					this.OntenthuonghieuChanging(value);
-					this.SendPropertyChanging();
-					this._tenthuonghieu = value;
-					this.SendPropertyChanged("tenthuonghieu");
-					this.OntenthuonghieuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mota", DbType="NChar(10)")]
-		public string mota
-		{
-			get
-			{
-				return this._mota;
-			}
-			set
-			{
-				if ((this._mota != value))
-				{
-					this.OnmotaChanging(value);
-					this.SendPropertyChanging();
-					this._mota = value;
-					this.SendPropertyChanged("mota");
-					this.OnmotaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="THUONGHIEU_VALI", Storage="_VALIs", ThisKey="mathuonghieu", OtherKey="mathuonghieu")]
-		public EntitySet<VALI> VALIs
-		{
-			get
-			{
-				return this._VALIs;
-			}
-			set
-			{
-				this._VALIs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_VALIs(VALI entity)
-		{
-			this.SendPropertyChanging();
-			entity.THUONGHIEU = this;
-		}
-		
-		private void detach_VALIs(VALI entity)
-		{
-			this.SendPropertyChanging();
-			entity.THUONGHIEU = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIZEVALI")]
 	public partial class SIZEVALI : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2727,6 +2589,144 @@ namespace QLCuaHangVali.Models
 		{
 			this.SendPropertyChanging();
 			entity.SIZEVALI = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.THUONGHIEU")]
+	public partial class THUONGHIEU : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _mathuonghieu;
+		
+		private string _tenthuonghieu;
+		
+		private string _mota;
+		
+		private EntitySet<VALI> _VALIs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnmathuonghieuChanging(int value);
+    partial void OnmathuonghieuChanged();
+    partial void OntenthuonghieuChanging(string value);
+    partial void OntenthuonghieuChanged();
+    partial void OnmotaChanging(string value);
+    partial void OnmotaChanged();
+    #endregion
+		
+		public THUONGHIEU()
+		{
+			this._VALIs = new EntitySet<VALI>(new Action<VALI>(this.attach_VALIs), new Action<VALI>(this.detach_VALIs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mathuonghieu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int mathuonghieu
+		{
+			get
+			{
+				return this._mathuonghieu;
+			}
+			set
+			{
+				if ((this._mathuonghieu != value))
+				{
+					this.OnmathuonghieuChanging(value);
+					this.SendPropertyChanging();
+					this._mathuonghieu = value;
+					this.SendPropertyChanged("mathuonghieu");
+					this.OnmathuonghieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenthuonghieu", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string tenthuonghieu
+		{
+			get
+			{
+				return this._tenthuonghieu;
+			}
+			set
+			{
+				if ((this._tenthuonghieu != value))
+				{
+					this.OntenthuonghieuChanging(value);
+					this.SendPropertyChanging();
+					this._tenthuonghieu = value;
+					this.SendPropertyChanged("tenthuonghieu");
+					this.OntenthuonghieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mota", DbType="NChar(10)")]
+		public string mota
+		{
+			get
+			{
+				return this._mota;
+			}
+			set
+			{
+				if ((this._mota != value))
+				{
+					this.OnmotaChanging(value);
+					this.SendPropertyChanging();
+					this._mota = value;
+					this.SendPropertyChanged("mota");
+					this.OnmotaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="THUONGHIEU_VALI", Storage="_VALIs", ThisKey="mathuonghieu", OtherKey="mathuonghieu")]
+		public EntitySet<VALI> VALIs
+		{
+			get
+			{
+				return this._VALIs;
+			}
+			set
+			{
+				this._VALIs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_VALIs(VALI entity)
+		{
+			this.SendPropertyChanging();
+			entity.THUONGHIEU = this;
+		}
+		
+		private void detach_VALIs(VALI entity)
+		{
+			this.SendPropertyChanging();
+			entity.THUONGHIEU = null;
 		}
 	}
 	
