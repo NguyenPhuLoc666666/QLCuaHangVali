@@ -23,12 +23,6 @@
     </script>
     <!--//tags -->
 
-    <link href="~/Public/homepage/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Public/homepage/css/style.css" rel="stylesheet" />
-    <link href="~/Public/homepage/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Public/homepage/css/main.css" rel="stylesheet" />
-
-
 
     <!--pop-up-box-->
     @*<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />*@
@@ -56,19 +50,19 @@
             <div class="grid images_3_of_2">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                        <li style="list-style: none" data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
                             <div class="thumb-image">
                                 <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
                             </div>
                         </li>
-                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                        <li style="list-style: none" data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
                             <div class="thumb-image">
-                                <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
+                                @*<img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">*@
                             </div>
                         </li>
-                        <li data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
+                        <li style="list-style: none" data-thumb="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)">
                             <div class="thumb-image">
-                                <img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">
+                                @*<img src="~/Content/AnhVali/@Html.DisplayFor(model => model.anhvali)" data-imagezoom="true" class="img-responsive" alt="">*@
                             </div>
                         </li>
                     </ul>
@@ -114,6 +108,51 @@
                     </li>
                 </ul>
             </div>
+
+            <!--Size Vali-->
+            <ul style="list-style: none; display: flex; flex-direction: row; width: 120px">
+                <li>
+                    <input type="checkbox" class="checked">
+                    <span class="span">S</span>
+                </li>
+                <li>
+                    <input type="checkbox" class="checked">
+                    <span class="span">M</span>
+                </li>
+                <li>
+                    <input type="checkbox" class="checked">
+                    <span class="span">L</span>
+                </li>
+                <li>
+                    <input type="checkbox" class="checked">
+                    <span class="span">XL</span>
+                </li>
+            </ul>
+            <!--Size Vali-->
+            <!--mau sac-->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Màu Sắc</h3>
+                <ul style="display: flex">
+                    <li style="display: flex">
+                        <div style="width: 40px; height: 16px; background-color: deeppink; border-radius: 8px;padding-right: 4px"></div>
+                        <a href="#">Hồng</a>
+                    </li>
+                    <li style="display: flex">
+                        <div style="width: 40px; height: 16px; background-color: blue; border-radius: 8px;"></div>
+                        <a href="">Xanh</a>
+                    </li>
+                    <li style="display: flex">
+                        <div style="width: 40px; height: 16px; background-color: green; border-radius: 8px;"></div>
+                        <a href="">Xanh lá</a>
+                    </li>
+                    <li style="display: flex">
+                        <div style="width: 40px; height: 16px; background-color: yellow; border-radius: 8px;"></div>
+                        <a href="">Vàng</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!--end mau sac-->
             <div class="product-single-w3l">
                 <p>
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>Đây là một sản phẩm dành cho người có
@@ -162,6 +201,51 @@
         <div class="clearfix"> </div>
     </div>
 </div>
+
+@*Thông số kỹ thuât*@
+
+<h2 style="text-align: center">Thông số kỹ thuật</h2>
+<div style="padding: 25px 100px">
+    <dl class="dl-horizontal">
+        <table class="table" border="1px" style="text-align: center">
+            <tr>
+                <th>Trạng thái </th>
+                @*<td> @Html.DisplayFor(model => model.trangthai)</td>*@
+                <td>Còn hàng</td>
+            </tr>
+            <tr>
+                <th>Chất liệu </th>
+                <td> @Html.DisplayFor(model => model.chatlieu)</td>
+            </tr>
+            <tr>
+                <th>Kích thước</th>
+                <td> @Html.DisplayFor(model => model.kichthuoc)</td>
+            </tr>
+            <tr>
+                <th>Thể tích </th>
+                <td> @Html.DisplayFor(model => model.thetich)</td>
+            </tr>
+            <tr>
+                <th>Bánh xe</th>
+                <td> @Html.DisplayFor(model => model.banhxe)</td>
+            </tr>
+            <tr>
+                <th>Khóa </th>
+                <td> @Html.DisplayFor(model => model.khoa)</td>
+            </tr>
+            <tr>
+                <th>Tiện ích</th>
+                <td> @Html.DisplayFor(model => model.tienich)</td>
+            </tr>
+        </table>
+        <div style="text-align: center">
+            <iframe align="middle" width="660" height="415" src="https://www.youtube.com/embed/@Html.DisplayFor(model=>model.linkvideo)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </dl>
+</div>
+
+@*kết thúc Thông số kỹ thuât*@
+
 <div class="featured-section" id="projects">
     <div class="container">
         <h3 class="tittle-w3l">

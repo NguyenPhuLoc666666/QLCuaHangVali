@@ -48,18 +48,20 @@
             <div class="left-side">
                 <h3 class="agileits-sear-head">Size Vali</h3>
                 <ul>
-                    <li>
-                        <input type="checkbox" class="checked">
-                        <span class="span">Size S</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checked">
-                        <span class="span">Size M</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checked">
-                        <span class="span">Size L</span>
-                    </li>
+                    @Html.Action("Size", "TimKiem")
+                </ul>
+            </div>
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Size Vali</h3>
+                <ul>
+                    @Html.Action("Size", "TimKiem")
+                </ul>
+            </div>
+            <div class="left-side">
+
+                <h3 class="agileits-sear-head">Màu Sắc</h3>
+                <ul>
+                    @Html.Action("MauSac", "TimKiem")
                 </ul>
             </div>
             <!-- //food preference -->
@@ -162,56 +164,19 @@
             <!-- deals -->
             <div class="deal-leftmk left-side">
                 <h3 class="agileits-sear-head">Vali yêu thích</h3>
-                <div class="special-sec1">
-                    <div class="col-xs-4 img-deals">
-                        <img src="~/Content/images/d2.jpg" alt="">
+                @foreach (var vali in Model)
+                {
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="width: 60px; height: 60px;" src="~/Content/AnhVali/@vali.anhvali" alt="Alternate Text" />
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #000000">@vali.tenvali</h3>
+                            <a href="single.html">@vali.giakhuyenmai VNĐ</a>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="col-xs-8 img-deal1">
-                        <h3>Lay's Potato Chips</h3>
-                        <a href="single.html">$18.00</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="special-sec1">
-                    <div class="col-xs-4 img-deals">
-                        <img src="~/Content/images/d1.jpg" alt="">
-                    </div>
-                    <div class="col-xs-8 img-deal1">
-                        <h3>Bingo Mad Angles</h3>
-                        <a href="single.html">$9.00</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="special-sec1">
-                    <div class="col-xs-4 img-deals">
-                        <img src="~/Content/images/d4.jpg" alt="">
-                    </div>
-                    <div class="col-xs-8 img-deal1">
-                        <h3>Tata Salt</h3>
-                        <a href="single.html">$15.00</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="special-sec1">
-                    <div class="col-xs-4 img-deals">
-                        <img src="~/Content/images/d5.jpg" alt="">
-                    </div>
-                    <div class="col-xs-8 img-deal1">
-                        <h3>Gujarat Dry Fruit</h3>
-                        <a href="single.html">$525.00</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="special-sec1">
-                    <div class="col-xs-4 img-deals">
-                        <img src="~/Content/images/d3.jpg" alt="">
-                    </div>
-                    <div class="col-xs-8 img-deal1">
-                        <h3>Cadbury Dairy Milk</h3>
-                        <a href="single.html">$149.00</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                }
             </div>
             <!-- //deals -->
         </div>
@@ -238,7 +203,7 @@
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
-                                        <a href="single.html">@vali.tenvali</a>
+                                        <a href="@Url.Action("Details", "TrangChu", new { id = vali.mavali })">@vali.tenvali</a>
                                     </h4>
                                     <div class="info-product-price">
                                         <span class="item_price">@vali.giakhuyenmai VNĐ</span>
@@ -269,125 +234,6 @@
                             </div>
                         </div>
                     }
-                    @*<div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="~/Content/images/m1.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Almonds, 100g</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$149.00</span>
-                                        <del>$280.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Almonds, 100g" />
-                                                <input type="hidden" name="amount" value="149.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="~/Content/images/m2.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Cashew Nuts, 100g</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$200.00</span>
-                                        <del>$420.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
-                                                <input type="hidden" name="amount" value="200.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="~/Content/images/m3.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Pista..., 250g</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$520.99</span>
-                                        <del>$600.99</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Pista, 250g" />
-                                                <input type="hidden" name="amount" value="520.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>*@
 
                     <div class="clearfix"></div>
                 </div>

@@ -186,6 +186,7 @@
     <Compile Include="Controllers\BaseUserController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2377,6 +2378,11 @@
     <Content Include="Views\TrangChu\LienHe.cshtml" />
     <Content Include="Views\TrangChu\PageVali.cshtml" />
     <Content Include="Views\TrangChu\Xacnhandonhang.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
+    <Content Include="Views\TimKiem\Size.cshtml" />
+    <Content Include="Views\TimKiem\SizeTimKiem.cshtml" />
+    <Content Include="Views\TimKiem\MauSac.cshtml" />
+    <Content Include="Views\TimKiem\MauSacTimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

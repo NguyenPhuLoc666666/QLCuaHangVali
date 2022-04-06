@@ -104,12 +104,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!-- //header lists -->
                 <!-- search -->
                 <div class="agileits_search">
-                    <form action="#" method="post">
-                        <input name="Search" type="search" placeholder="Bạn muốn tìm kiếm sản phẩm gì?" required="">
+                    @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+                    {
+                        <input name="sTuKhoa" type="search" placeholder="Bạn muốn tìm kiếm sản phẩm gì?" required="">
                         <button type="submit" class="btn btn-default" aria-label="Left Align">
+
                             <span class="fa fa-search" aria-hidden="true"> </span>
                         </button>
-                    </form>
+                    }
                 </div>
                 <!-- //search -->
                 <!-- cart details -->
@@ -598,12 +600,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="ban-top">
         <div class="container">
             <div class="agileits-navi_search">
-                <form action="~/Views/TrangChu/DanhMucVali.cshtml" method="post">
-                    <select id="agileinfo-nav_search" name="agileinfo_search" required="">
-                        <option class="danhmucsp" value="">Danh mục sản phẩm</option>
+                @using (Html.BeginForm("DanhMucVali", "TrangChu", FormMethod.Post))
+                {
+                    @*<form action="~/Views/TrangChu/DanhMucVali/1.cshtml" method="post">*@
+
+                    <select id="agileinfo-nav_search" required="" onchange="location = this.value">
+                        <option value="">Danh Mục Sản Phẩm</option>
                         @Html.Action("DanhMuc", "TrangChu")
                     </select>
-                </form>
+
+
+                    @*</form>*@
+                }
+
             </div>
             <div class="top_nav_left">
                 <nav class="navbar navbar-default">
@@ -1336,10 +1345,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/Public/homepage/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
- 
 
+    @* Xử lý javacscipts bằng  jQuery *@
+    <script src="~/Public/homepage/js/main.js"></script>
 
 </body>
-
 </html>
-

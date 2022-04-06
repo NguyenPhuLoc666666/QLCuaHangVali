@@ -1,16 +1,8 @@
 ﻿@model IEnumerable<QLCuaHangVali.Models.DANHMUCVALI>
 @foreach (var item in Model)
 {
-    @*<option value="@item.tendanhmuc">
-        @item.tendanhmuc
-    </option>*@
-<option value="@item.madanhmuc" >
-        <a href="@Url.Action("DanhMucVali","TrangChu",new { id = item.madanhmuc})">
+    <option  value="@Url.Action("DanhMucVali","TrangChu",new { id = item.madanhmuc})">
             @item.tendanhmuc
-        </a>
-</option>
-@*<a href="@Url.Action("DanhMucVali","TrangChu",new { id  = item.madanhmuc})" class="btn btn-link">
-    @item.tendanhmuc
-</a>*@
+     </option>
 }
 

@@ -34,6 +34,7 @@ namespace QLCuaHangVali.Controllers
         {
             var vali =  db.VALIs.Where(a => a.madanhmuc == id).ToList();
             //var vali = from s in db.VALIs where s.mavali == id select s;
+
             return View(vali);
         }
 

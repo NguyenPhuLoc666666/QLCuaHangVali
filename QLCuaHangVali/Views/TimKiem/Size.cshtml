@@ -1,0 +1,9 @@
+﻿@model IEnumerable<QLCuaHangVali.Models.SIZEVALI>
+@foreach (var item in Model)
+{
+
+<li>
+    <input type="checkbox" class="checked" name="maSize" onchange="window.location.href = '@Url.Action("SizeTimKiem","TimKiem", new { id = item.masize})'">
+    <span class="span">@item.tensize</span>
+</li>
+}
