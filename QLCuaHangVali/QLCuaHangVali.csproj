@@ -2567,7 +2567,6 @@
     <Content Include="Views\NguoiDung\DangNhap.cshtml" />
     <Content Include="Views\TrangChu\DanhMucVali.cshtml" />
     <Content Include="Views\TrangChu\Details.cshtml" />
-    <Content Include="Views\TrangChu\GioHang.cshtml" />
     <Content Include="Views\TrangChu\LienHe.cshtml" />
     <Content Include="Views\TrangChu\PageVali.cshtml" />
     <Content Include="Views\TrangChu\Xacnhandonhang.cshtml" />

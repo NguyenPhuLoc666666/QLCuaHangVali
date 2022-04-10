@@ -133,5 +133,64 @@ namespace QLCuaHangVali.Controllers
             lstGiohang.Clear();
             return RedirectToAction("Index", "TrangChu");
         }
+
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            //Kiem tra dang nhap
+            if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
+            {
+                return RedirectToAction("Dangnhap", "Nguoidung");
+            }
+            if (Session["Giohang"] == null)
+            {
+                return RedirectToAction("Index", "BookStore");
+            }
+
+            //Lay gio hang tu Session
+            List<GioHang> lstGiohang = Laygiohang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return View(lstGiohang);
+        }
+        // Chức năng đăt hàng
+        public ActionResult DatHang(FormCollection collection)
+        {
+            //Them Don hang
+            DONDATHANG ddh = new DONDATHANG();
+            KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+            List<GioHang> gh = Laygiohang();
+            ddh.makh = kh.makh;
+            ddh.ngaydat = DateTime.Now;
+            var ngaygiao = String.Format("{0:mm/dd/yyyy}", collection["Ngaygiao"]);
+            ddh.ngaygiao = DateTime.Parse(ngaygiao);
+            if (ddh.ngaygiao < ddh.ngaydat.Value)
+            {
+                Session["Message"] = "Ngày giao hàng phải lớn hơn hoặc bằng ngày hiện tại";
+                return RedirectToAction("DatHang");
+            }
+            ddh.tinhtrang = false;
+            //ddh.mathanhtoan = false;
+            db.DONDATHANGs.InsertOnSubmit(ddh);
+            db.SubmitChanges();
+            //Them chi tiet don hang
+            foreach (var item in gh)
+            {
+                CHITIETDONHANG ctdh = new CHITIETDONHANG();
+                ctdh.madonhang = ddh.madonhang;
+                ctdh.mavali = item.imavali;
+                ctdh.soluong = item.isoluong;
+                db.CHITIETDONHANGs.InsertOnSubmit(ctdh);
+            }
+            db.SubmitChanges();
+            Session["Giohang"] = null;
+            return RedirectToAction("Xacnhandonhang", "Giohang");
+        }
+
+        // Xác nhận đơn hàng
+        public ActionResult Xacnhandonhang()
+        {
+            return View();
+        }
     }
 }

@@ -35,10 +35,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @{int stt = 0;}
                         @foreach (var item in Model)
                         {
+                            {stt++;}
                             <tr class="rem1">
-                                <td class="invert">@item.imavali</td>
+                                <td class="invert">@stt</td>
                                 <td class="invert-image">
                                     <a href="#">
                                         <img style="width: 120px" src="~/Content/AnhVali/@item.ianhvali" alt=" " class="img-responsive">

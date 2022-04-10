@@ -175,39 +175,18 @@
                     <label>trên cả khắp nước.</label>
                 </p>
             </div>
-            <div class="input-group mb-3 input-spinner">
-                <input type="text"  id="iqQuantity" class="form-control" name="name" value="1" />
+            <div style="display: flex; align-items: center" class="input-group mb-3 input-spinner">
+                <span>Số lượng:</span>
+                <input style="width: 100px; margin-left:10px" type="number"  id="iqQuantity" class="form-control" name="name" value="1" />
+                <p style="color: black; margin-left:20px"> @Html.DisplayFor(model => model.soluongton) Số lượng có sẵn </p>
             </div>
-            <div class="occasion-cart">
-                @*<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                    <fieldset>
-                        <input type="hidden" name="cmd" value="_cart" />
-                        <input type="hidden" name="add" value="1" />
-                        <input type="hidden" name="business" value=" " />
-                        <input type="hidden" name="item_name" value="@Html.DisplayFor(model => model.tenvali)" />
-                        <input type="hidden" name="amount" value="@Html.DisplayFor(model => model.giakhuyenmai)" />
-                        <input type="hidden" name="discount_amount" value="1.00" />
-                        <input type="hidden" name="currency_code" value="VND" />
-                        <input type="hidden" name="return" value=" " />
-                        <input type="hidden" name="cancel_return" value=" " />
-                        <input type="submit" name="submit" value="Thêm vào giở hàng" class="button" />
-                    </fieldset>
-                </form>
-            </div>*@
-                @*<div>
-                <div id="Datmua">
-                    <button id="addtocart" type="button">
-                        Thêm vào giỏ
-                    </button>
-                </div>
-            </div>*@
 
+            <div class="occasion-cart">
             </div>
             <div class="form-group col-md">
                 <a href="#" id="addtocart" class="btn btn-primary">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="text" h>Thêm vào giỏ hàng - @Html.DisplayFor(model => model.mavali)</span>
+                    <i class="fa fa-shopping-cart"></i>
+                    <span style="width: 200px; height: 60px" class="text ">Thêm vào giỏ hàng</span>
                 </a>
             </div>
 
@@ -221,7 +200,7 @@
 <h2 style="text-align: center">Thông số kỹ thuật</h2>
 <div style="padding: 25px 100px">
     <dl class="dl-horizontal">
-        <table class="table" border="1px" style="text-align: center">
+        <table class="table" border="1" style="text-align: center">
             <tr>
                 <th>Trạng thái </th>
                 @*<td> @Html.DisplayFor(model => model.trangthai)</td>*@
@@ -572,7 +551,7 @@
                         icon: 'success',
                         title: 'Thêm vào giỏ hàng thành công',
                         showConfirmButton: false,
-                        timer: 2500
+                        timer: 2000
                     });
                 },
                 error: function () {
