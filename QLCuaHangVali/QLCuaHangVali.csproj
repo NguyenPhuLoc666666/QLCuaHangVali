@@ -345,9 +345,11 @@
     <Content Include="Content\AnhVali\3_vali3_navy3.jpg" />
     <Content Include="Content\AnhVali\3_vali3_navy4.jpg" />
     <Content Include="Content\AnhVali\3_vali3_navy5.jpg" />
+    <Content Include="Content\AnhVali\4_vali1.jpg" />
     <Content Include="Content\AnhVali\4_vali1_den1.jpg" />
     <Content Include="Content\AnhVali\4_vali1_den2.jpg" />
     <Content Include="Content\AnhVali\4_vali1_den3.jpg" />
+    <Content Include="Content\AnhVali\4_vali2.jpg" />
     <Content Include="Content\AnhVali\4_vali2_nau3.jpg" />
     <Content Include="Content\AnhVali\4_vali2_nau4.jpg" />
     <Content Include="Content\AnhVali\4_vali2_navy1.jpg" />
@@ -386,6 +388,12 @@
     <Content Include="Content\AnhVali\5_vali2_ruoudo3.jpg" />
     <Content Include="Content\AnhVali\5_vali2_ruoudo4.jpg" />
     <Content Include="Content\AnhVali\5_vali2_ruoudo5.jpg" />
+    <Content Include="Content\AnhVali\5_vali3.jpg" />
+    <Content Include="Content\AnhVali\5_vali3_den1.jpg" />
+    <Content Include="Content\AnhVali\5_vali3_den2.jpg" />
+    <Content Include="Content\AnhVali\5_vali3_den3.jpg" />
+    <Content Include="Content\AnhVali\5_vali3_den4.jpg" />
+    <Content Include="Content\AnhVali\5_vali3_den5.jpg" />
     <Content Include="Content\AnhVali\6_vali1.jpg" />
     <Content Include="Content\AnhVali\6_vali1_bac1.jpg" />
     <Content Include="Content\AnhVali\6_vali1_bac2.jpg" />
@@ -2563,6 +2571,7 @@
     <Content Include="Views\TimKiem\SizeTimKiem.cshtml" />
     <Content Include="Views\TimKiem\MauSac.cshtml" />
     <Content Include="Views\TimKiem\MauSacTimKiem.cshtml" />
+    <Content Include="Views\GioHang\Giohang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

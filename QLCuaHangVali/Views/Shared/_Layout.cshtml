@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!-- header-bot-->
             <div class="col-md-4 logo_agile">
                 <h1>
-                    <a class="Reload" href="@Url.Action("Index","TrangChu")">
+                    <a class="Reload" href="@Url.Action("Index", "TrangChu")">
                         <span>Mia.vn</span>
                         @*<span>S</span>hoppy*@
                         <img src="~/Public/homepage/images/logo2.png" alt=" ">
@@ -96,7 +96,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <a class="dropdown-item_user" href="#">Hồ Sơ</a>
                             <a class="dropdown-item_user" href="#">Tài Khoản</a>
                             <a class="dropdown-item_user" href="#">Cài đặt</a>
-                            <a class="dropdown-item_user" href="@Url.Action("DangXuat","NguoiDung")">Đăng Xuất</a>
+                            <a class="dropdown-item_user" href="@Url.Action("DangXuat", "NguoiDung")">Đăng Xuất</a>
                         </div>
                     </li>
                 </ul>
@@ -117,13 +117,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!-- cart details -->
                 <div class="top_nav_right">
                     <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-                        <form action="#" method="post" class="last">
+                        @*<form action="Giohang" method="" class="last">*@
+                        <a style="position: relative" href="@Url.Action("Giohang", "GioHang")">
                             <input type="hidden" name="cmd" value="_cart">
                             <input type="hidden" name="display" value="1">
                             <button class="w3view-cart" type="submit" name="submit" value="">
                                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                             </button>
-                        </form>
+                            <h3 style="position: absolute; top: -30px; right: -20px; color: white; background-color: #e14a1a; width: 25px; height: 25px; border-radius: 50%" id="CartCount">@Session["Count"]</h3>
+                        </a>
+                        @*</form>*@
                     </div>
                 </div>
                 <!-- //cart details -->
@@ -1345,9 +1348,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/Public/homepage/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
-
     @* Xử lý javacscipts bằng  jQuery *@
     <script src="~/Public/homepage/js/main.js"></script>
 
+    @*Xử lý giỏ hàng*@
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+            //$(document).ready(function () {
+            //    $(".ajax-add-to-cart").click(function () {
+            //        $.ajax({
+            //            url: "/GioHang/ThemGiohang/",
+            //            data: {
+            //                id: $(".ajax-add-to-cart").data("id"),
+            //            },
+            //            success: function () {
+            //                Swal.fire({
+            //                    position: 'top-end',
+            //                    icon: 'success',
+            //                    title: 'Thêm vào giỏ hàng thành công',
+            //                    showConfirmButton: false,
+            //                    timer: 1500
+            //                });
+            //            },
+            //            error: function() {
+            //                Swal.fire({
+            //                    icon: 'error',
+            //                    title: 'Thêm giỏ hàng thất bại',
+            //                    text: 'Vui lòng thử lại!',
+            //                    showConfirmButton: false,
+            //                    timer: 1500
+            //                })
+            //            }
+            //        });
+            //    })
+            //})
+    </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

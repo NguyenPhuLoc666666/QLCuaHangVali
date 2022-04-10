@@ -1,0 +1,75 @@
+﻿@using QLCuaHangVali.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="privacy">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Giỏ Hàng
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <h4>
+                Giỏ hàng của bạn chứa:
+                <span>@Model.Count Sản phẩm</span>
+            </h4>
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>SL No.</th>
+                            <th>Sản Phẩm</th>
+                            <th>Số Lượng</th>
+                            <th>Tên sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Xóa SP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="rem1">
+                                <td class="invert">@item.imavali</td>
+                                <td class="invert-image">
+                                    <a href="#">
+                                        <img style="width: 120px" src="~/Content/AnhVali/@item.ianhvali" alt=" " class="img-responsive">
+                                    </a>
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <div class="entry value-minus">&nbsp;</div>
+                                            <div class="entry value">
+                                                <span>@item.isoluong</span>
+                                            </div>
+                                            <div class="entry value-plus active">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">@item.itenvali</td>
+                                <td class="invert">@item.dDongia VNĐ</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <div class="close1"> </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            @*// Viết tiếp code tông tiền*@
+        </div>
+    </div>
+</div>

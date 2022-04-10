@@ -4,7 +4,6 @@
 }
 
 .dropdown_user {
-
     flex-direction: column;
     position: absolute;
     width: 150px;
@@ -20,7 +19,7 @@
 }
 
 .UserName_drop.active .dropdown_user {
-    display: flex ;
+    display: flex;
 }
 
 
@@ -33,9 +32,9 @@
     align-items: center;
 }
 
-.dropdown-item_user:hover{
-    background-color: orangered;
-}
+    .dropdown-item_user:hover {
+        background-color: orangered;
+    }
 
 .icon_user {
     float: right;
@@ -49,3 +48,4 @@
 .dropdown-item_user_icon {
     cursor: default;
 }
+

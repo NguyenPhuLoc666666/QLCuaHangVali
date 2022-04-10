@@ -22,8 +22,6 @@
         }
     </script>
     <!--//tags -->
-
-
     <!--pop-up-box-->
     @*<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />*@
     <link href="~/Public/homepage/css/popuo-box.css" rel="stylesheet" />
@@ -177,24 +175,40 @@
                     <label>trên cả khắp nước.</label>
                 </p>
             </div>
+            <div class="input-group mb-3 input-spinner">
+                <input type="text"  id="iqQuantity" class="form-control" name="name" value="1" />
+            </div>
             <div class="occasion-cart">
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                    <form action="#" method="post">
-                        <fieldset>
-                            <input type="hidden" name="cmd" value="_cart" />
-                            <input type="hidden" name="add" value="1" />
-                            <input type="hidden" name="business" value=" " />
-                            <input type="hidden" name="item_name" value="@Html.DisplayFor(model => model.tenvali)" />
-                            <input type="hidden" name="amount" value="@Html.DisplayFor(model => model.giakhuyenmai)" />
-                            <input type="hidden" name="discount_amount" value="1.00" />
-                            <input type="hidden" name="currency_code" value="VND" />
-                            <input type="hidden" name="return" value=" " />
-                            <input type="hidden" name="cancel_return" value=" " />
-                            <input type="submit" name="submit" value="Thêm vào giở hàng" class="button" />
-                        </fieldset>
-                    </form>
+                @*<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                <form action="#" method="post">
+                    <fieldset>
+                        <input type="hidden" name="cmd" value="_cart" />
+                        <input type="hidden" name="add" value="1" />
+                        <input type="hidden" name="business" value=" " />
+                        <input type="hidden" name="item_name" value="@Html.DisplayFor(model => model.tenvali)" />
+                        <input type="hidden" name="amount" value="@Html.DisplayFor(model => model.giakhuyenmai)" />
+                        <input type="hidden" name="discount_amount" value="1.00" />
+                        <input type="hidden" name="currency_code" value="VND" />
+                        <input type="hidden" name="return" value=" " />
+                        <input type="hidden" name="cancel_return" value=" " />
+                        <input type="submit" name="submit" value="Thêm vào giở hàng" class="button" />
+                    </fieldset>
+                </form>
+            </div>*@
+                @*<div>
+                <div id="Datmua">
+                    <button id="addtocart" type="button">
+                        Thêm vào giỏ
+                    </button>
                 </div>
+            </div>*@
 
+            </div>
+            <div class="form-group col-md">
+                <a href="#" id="addtocart" class="btn btn-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="text" h>Thêm vào giỏ hàng - @Html.DisplayFor(model => model.mavali)</span>
+                </a>
             </div>
 
         </div>
@@ -288,7 +302,7 @@
                                         <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
                                     </fieldset>
                                 </form>
-                            </div>
+                            </div>   
                         </div>
                     </div>
                 </li>
@@ -534,3 +548,45 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Html.DisplayFor(model => model.mavali);
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#iqQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ThemGiohang", "GioHang")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $('#CartCount').text(@Session["Count"] + 1);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Thêm vào giỏ hàng thành công',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thêm giỏ hàng thất bại',
+                        text: 'Vui lòng thử lại!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+}

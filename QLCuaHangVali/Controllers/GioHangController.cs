@@ -11,58 +11,54 @@ namespace QLCuaHangVali.Controllers
     {
         // GET: GioHang
         ValiDBDataContext db = new ValiDBDataContext();
-        public ActionResult Index()
-        {
-            return View();
-        }
         public List<GioHang> Laygiohang()
         {
-            List<GioHang> lstGiohang = Session["GioHang"] as List<GioHang>;
+            List<GioHang> lstGiohang = Session["Giohang"] as List<GioHang>;
             if (lstGiohang == null)
             {
+                // Nếu giỏi hàng chưa tồn tại thì khởi tạo listGiohang
                 lstGiohang = new List<GioHang>();
-                Session["GioHang"] = lstGiohang;
+                Session["Giohang"] = lstGiohang;
             }
             return lstGiohang;
         }
-        public ActionResult ThemGiohang(int imavali, string strURL)
+
+        public ActionResult ThemGiohang(String Id, int Quantity)
         {
-            //Lay ra Session gio hang
+            int id = int.Parse(Id);
+            // Lấy ra Session giao hàng 
             List<GioHang> lstGiohang = Laygiohang();
-            //Kiem tra sách này tồn tại trong Session["Giohang"] chưa?
-            GioHang sanpham = lstGiohang.Find(n => n.imavali == imavali);
+            // Kiểm tra vali này tồn tại trong Session["Giohang"] chưa?
+            GioHang sanpham = lstGiohang.Find(n => n.imavali == id);
+            //Session["Count"] = 1;
             if (sanpham == null)
             {
-                sanpham = new GioHang(imavali);
+                sanpham = new GioHang(id);
+                sanpham.isoluong = Quantity;
                 lstGiohang.Add(sanpham);
-                //if (sanpham.soluongton < sanpham.isoluong)
-                //{
-                //    return View("ThongBao");
-                //}
-                return Redirect(strURL);
+                Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+                //return Redirect(strURL);
             }
             else
             {
-                //if (sanpham.soluongton < sanpham.isoluong)
-                //{
-                //    return View("ThongBao");
-                //}
-                sanpham.isoluong++;
-                return Redirect(strURL);
+                sanpham.isoluong = Quantity + sanpham.isoluong;
+                //return Redirect(strURL);
             }
+            return Json(new { Message = "Thành công", JsonRequestBehavior.AllowGet });
         }
-        //Tong so luong
+
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
-            List<GioHang> lstGiohang = Session["GioHang"] as List<GioHang>;
+            List<GioHang> lstGiohang = Session["Giohang"] as List<GioHang>;
             if (lstGiohang != null)
             {
                 iTongSoLuong = lstGiohang.Sum(n => n.isoluong);
             }
             return iTongSoLuong;
         }
-        //Tinh tong tien
+
+        // Tính tổng tiền 
         private double TongTien()
         {
             double iTongTien = 0;
@@ -73,63 +69,66 @@ namespace QLCuaHangVali.Controllers
             }
             return iTongTien;
         }
-        //Trang Gio hang
-        public ActionResult GioHang()
+
+        // Xây dựng trang Giỏ hàng
+        public ActionResult Giohang()
         {
             List<GioHang> lstGiohang = Laygiohang();
             if (lstGiohang.Count == 0)
             {
                 return RedirectToAction("Index", "TrangChu");
             }
-            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tonsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
-            ViewBag.Message = Session["Message"];
-            Session.Remove("Message");
             return View(lstGiohang);
         }
-        //Tao Partial view de hien thi thong tin gio hang
+
         public ActionResult GiohangPartial()
         {
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return PartialView();
         }
-        //Xoa Giohang
-        public ActionResult XoaGiohang(int mavali)
+
+        // xóa giỏ hàng
+        public ActionResult XoaGiohang(int imavali)
         {
-            // Lay gio hang tu Session
+            // lấy giỏ hàng từ Seccsion
             List<GioHang> lstGiohang = Laygiohang();
-            //Kiem tra sach da co trong Session["GioHang"]
-            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.imavali == mavali);
-            //Neu ton tai thi cho sua Soluong
+            // Kiểm tra sách đã có trong Session["Giohang"]
+            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.imavali == imavali);
+            // nếu tồn tại thì cho sửa số lượng
             if (sanpham != null)
             {
-                lstGiohang.RemoveAll(n => n.imavali == mavali);
+                lstGiohang.RemoveAll(n => n.imavali == imavali);
                 return RedirectToAction("GioHang");
             }
+
             if (lstGiohang.Count == 0)
             {
                 return RedirectToAction("Index", "TrangChu");
-
             }
+
             return RedirectToAction("GioHang");
         }
-        public ActionResult CapnhatGiohang(int mavali, FormCollection f)
+
+        public ActionResult CapnhatGiohang(int iMaSP, FormCollection f)
         {
-            //Lay gio hang tu Session
+            // lấy giỏ hàng từ Session
             List<GioHang> lstGiohang = Laygiohang();
-            //Kiem tra sach da co trong Session["Giohang"]
-            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.imavali == mavali);
-            //Neu ton tai thi cho sua Soluong
+            // Kiểm tra sách có trong Session["Giohang]
+            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.imavali == iMaSP);
+            // nếu tồn tại thì cho sử số lượng
             if (sanpham != null)
             {
                 sanpham.isoluong = int.Parse(f["txtSoluong"].ToString());
             }
-            return RedirectToAction("GioHang");
+            return RedirectToAction("Giohang");
         }
-        public ActionResult XoaTatcaGiohang()
+
+        public ActionResult Xoatatcagiohang()
         {
-            //Lay gio hang tu Session
+            // lấy giỏ hàng từ Session
             List<GioHang> lstGiohang = Laygiohang();
             lstGiohang.Clear();
             return RedirectToAction("Index", "TrangChu");

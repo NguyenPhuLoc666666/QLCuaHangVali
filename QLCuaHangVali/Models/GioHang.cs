@@ -20,9 +20,9 @@ namespace QLCuaHangVali.Models
             get { return isoluong * dDongia; }
         }
         //khoi tao gio hang theo mavali
-        public GioHang(int mavali)
+        public GioHang(int id)
         {
-            imavali = mavali;
+            imavali = id;
             VALI vali = db.VALIs.Single(n => n.mavali == imavali);
             itenvali = vali.tenvali;
             ianhvali = vali.anhvali;
