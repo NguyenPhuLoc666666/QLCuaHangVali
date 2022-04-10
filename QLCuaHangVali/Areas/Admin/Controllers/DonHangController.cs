@@ -47,7 +47,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             var mathanhtoan = collection["mathanhtoan"];
             var ngaydat = collection["ngaydat"];
             var ngaygiao = collection["ngaygiao"];
-            var tinhtrang = collection["tinhtrang"];
+            var tinhtrang = Convert.ToBoolean(collection["tinhtrang"]);
             var ghichu = collection["ghichu"];
 
             kh.makh = id;
@@ -61,7 +61,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
                 kh.mathanhtoan = int.Parse(mathanhtoan.ToString());
                 kh.ngaydat = DateTime.Parse(ngaydat.ToString());
                 kh.ngaygiao = DateTime.Parse(ngaygiao.ToString());
-                kh.tinhtrang =  (tinhtrang.ToString());
+                kh.tinhtrang =  tinhtrang;
                 kh.ghichu = ghichu.ToString();
 
                 UpdateModel(kh);

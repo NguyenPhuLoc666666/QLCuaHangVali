@@ -180,6 +180,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuongHieuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ValiController.cs" />
@@ -2528,6 +2529,10 @@
     <Content Include="Areas\Admin\Views\DonHang\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\Delete.cshtml" />
     <None Include="Models\ValiDB.dbml.layout">
       <DependentUpon>ValiDB.dbml</DependentUpon>
     </None>
@@ -2577,6 +2582,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Views\KhuyenMai\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
