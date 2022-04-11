@@ -203,7 +203,7 @@
                 int masizeml = 3;
                 int masizems = 1;
                 List<VALI> listsizesl = Model.Where(n => n.masize == masizeml || n.masize == masizems).ToList();
-                // Lấy ra yêu thích
+                // Lấy ra yêu thích 
                 List<VALI> listyeuthich = listsizesl.OrderByDescending(a => a.gia).Take(7).ToList();
             }
             <div class="deal-leftmk left-side">
@@ -338,7 +338,7 @@
         </h3>
         <!-- //tittle heading -->
         @{
-            // Lấy ra các vali có giá khuyễn mãi nhiều nhất
+            // Lấy ra các vali có giá khuyễn mãi nhiều nhất 
             int masizem = 2;
             List<VALI> listsizes = Model.Where(n => n.masize == masizem).ToList();
             List<VALI> valikhuyenmai = listsizes.OrderByDescending(a => a.giakhuyenmai).Take(8).ToList();

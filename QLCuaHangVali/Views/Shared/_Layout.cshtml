@@ -40,7 +40,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -1213,26 +1212,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     @*<script src="js/minicart.js"></script>*@
 
     <script src="~/Public/homepage/js/minicart.js"></script>
-    <script>
-        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
-
-        paypalm.minicartk.cart.on('checkout', function (evt) {
-            var items = this.items(),
-                len = items.length,
-                total = 0,
-                i;
-
-            // Count the number of each item in the cart
-            for (i = 0; i < len; i++) {
-                total += items[i].get('quantity');
-            }
-
-            if (total < 1) {
-                alert('Số lượng đặt hàng tối thiểu là 1. Vui lòng thêm nhiều hơn vào giỏ hàng của bạn trước khi thanh toán');
-                evt.preventDefault();
-            }
-        });
-    </script>
     <!-- //cart-js -->
     <!-- price range (top products) -->
     @*<script src="js/jquery-ui.js"></script>*@
@@ -1351,39 +1330,90 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     @* Xử lý javacscipts bằng  jQuery *@
     <script src="~/Public/homepage/js/main.js"></script>
 
-    @*Xử lý giỏ hàng*@
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
 
-            //$(document).ready(function () {
-            //    $(".ajax-add-to-cart").click(function () {
-            //        $.ajax({
-            //            url: "/GioHang/ThemGiohang/",
-            //            data: {
-            //                id: $(".ajax-add-to-cart").data("id"),
-            //            },
-            //            success: function () {
-            //                Swal.fire({
-            //                    position: 'top-end',
-            //                    icon: 'success',
-            //                    title: 'Thêm vào giỏ hàng thành công',
-            //                    showConfirmButton: false,
-            //                    timer: 1500
-            //                });
-            //            },
-            //            error: function() {
-            //                Swal.fire({
-            //                    icon: 'error',
-            //                    title: 'Thêm giỏ hàng thất bại',
-            //                    text: 'Vui lòng thử lại!',
-            //                    showConfirmButton: false,
-            //                    timer: 1500
-            //                })
-            //            }
-            //        });
-            //    })
-            //})
-    </script>
+    @*Ajax phần giỏ hàng*@
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @RenderSection("scripts", required: false)
+
+
+    @*Scrip phần check out*@ 
+    <!-- easy-responsive-tabs -->
+    <link rel="stylesheet" type="text/css" href="~/Public/homepage/css/easy-responsive-tabs.css " />
+    <script src="~/Public/homepage/js/easyResponsiveTabs.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Horizontal Tab
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <!-- //easy-responsive-tabs -->
+    <!-- credit-card -->
+    <script src="~/Public/homepage/js/creditly.js"></script>
+    <link rel="stylesheet" href="~/Public/homepage/css/creditly.css" type="text/css" media="all" />
+
+    <script>
+        $(function () {
+            var creditly = Creditly.initialize(
+                '.creditly-wrapper .expiration-month-and-year',
+                '.creditly-wrapper .credit-card-number',
+                '.creditly-wrapper .security-code',
+                '.creditly-wrapper .card-type');
+
+            $(".creditly-card-form .submit").click(function (e) {
+                e.preventDefault();
+                var output = creditly.validate();
+                if (output) {
+                    // Your validated credit card output
+                    console.log(output);
+                }
+            });
+        });
+    </script>
+    <!-- //credit-card -->
+
+    <!-- start-smooth-scrolling -->
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+
 </body>
 </html>

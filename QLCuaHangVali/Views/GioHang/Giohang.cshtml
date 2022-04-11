@@ -73,6 +73,9 @@
         <div>
             @*// Viết tiếp code tông tiền*@
         </div>
+        <div class="checkout_vali">
+            <a class="btn btn-check" href="@Url.Action("DatHang","GioHang")">Thanh toán</a>
+        </div>
     </div>
 </div>
 <script src="~/Public/homepage/js/jquery-2.1.4.min.js"></script>
@@ -94,27 +97,6 @@
     });
 </script>
 <script src="~/Public/homepage/js/minicart.js"></script>
-@*<script src="js/minicart.js"></script>*@
-<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
-
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-</script>
 <!-- //cart-js -->
 <!--quantity-->
 <script>

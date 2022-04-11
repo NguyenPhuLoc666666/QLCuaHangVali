@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace QLCuaHangVali.Controllers
 {
-    public class GioHangController : Controller
+    public class GioHangController : BaseUserController
     {
         // GET: GioHang
         ValiDBDataContext db = new ValiDBDataContext();
@@ -138,27 +138,28 @@ namespace QLCuaHangVali.Controllers
         public ActionResult DatHang()
         {
             //Kiem tra dang nhap
-            if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
+            if (Session["KhachHangDangNhap"] == null || Session["KhachHangDangNhap"].ToString() == "")
             {
-                return RedirectToAction("Dangnhap", "Nguoidung");
+                return RedirectToAction("Index", "TrangChu");
             }
             if (Session["Giohang"] == null)
             {
-                return RedirectToAction("Index", "BookStore");
+                return RedirectToAction("Index", "TrangChu");
             }
 
             //Lay gio hang tu Session
             List<GioHang> lstGiohang = Laygiohang();
-            ViewBag.Tongsoluong = TongSoLuong();
-            ViewBag.Tongtien = TongTien();
+            //ViewBag.Tongsoluong = TongSoLuong();
+            //ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
         }
-        // Chức năng đăt hàng
+        // Chức năng đăt
+        [HttpPost]
         public ActionResult DatHang(FormCollection collection)
         {
             //Them Don hang
             DONDATHANG ddh = new DONDATHANG();
-            KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+            KHACHHANG kh = (KHACHHANG)Session["KhachHangDangNhap"];
             List<GioHang> gh = Laygiohang();
             ddh.makh = kh.makh;
             ddh.ngaydat = DateTime.Now;

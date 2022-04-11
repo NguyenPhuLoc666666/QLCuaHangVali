@@ -2563,7 +2563,6 @@
     <Content Include="Views\NguoiDung\DangKy.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\TrangChu\DanhMuc.cshtml" />
-    <Content Include="Views\TrangChu\ThuongHieu.cshtml" />
     <Content Include="Views\NguoiDung\DangNhap.cshtml" />
     <Content Include="Views\TrangChu\DanhMucVali.cshtml" />
     <Content Include="Views\TrangChu\Details.cshtml" />
@@ -2576,6 +2575,9 @@
     <Content Include="Views\TimKiem\MauSac.cshtml" />
     <Content Include="Views\TimKiem\MauSacTimKiem.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\TrangChu\ValiIndex.cshtml" />
+    <Content Include="Views\TimKiem\ThuongHieu.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace QLCuaHangVali.Controllers
 {
@@ -11,16 +12,37 @@ namespace QLCuaHangVali.Controllers
     {
         // GET: TrangChu
         ValiDBDataContext db = new ValiDBDataContext();
+
         private List<VALI> Vailimoi(int count)
         {
+
             return db.VALIs.OrderByDescending(a => a.ngaytao).Take(count).ToList();
         }
 
-
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var vali = Vailimoi(3);
-            return View(vali);
+            if (page == null) page = 1;
+            var Danhmuc = db.DANHMUCVALIs.ToList();
+            var Vali = db.VALIs.ToList();
+            List<VALI> Valitheodanhmuc = new List<VALI>();
+            foreach (var item in Danhmuc)
+            {
+                int sttitem1 = 0;
+                foreach (var item1 in Vali)
+                {
+                    if (item1.DANHMUCVALI.madanhmuc == item.madanhmuc)
+                    {
+                        sttitem1++;
+                        if (sttitem1 <= 3)
+                        {
+                            Valitheodanhmuc.Add(item1);
+                        }
+                    }
+                }
+            }
+            int pageSize = 12;
+            int pageNum = page ?? 1;
+            return View(Valitheodanhmuc.ToPagedList(pageNum, pageSize));
         }
 
         //Danh mục trên header
@@ -34,14 +56,7 @@ namespace QLCuaHangVali.Controllers
         {
             var vali =  db.VALIs.Where(a => a.madanhmuc == id).ToList();
             //var vali = from s in db.VALIs where s.mavali == id select s;
-
             return View(vali);
-        }
-
-        public ActionResult ThuongHieu()
-        {
-            var ThuongHieu = from dm in db.THUONGHIEUs select dm;
-            return PartialView(ThuongHieu);
         }
 
         // Trang tất cả vali
@@ -110,6 +125,33 @@ namespace QLCuaHangVali.Controllers
                        where s.mavali == id
                        select s;
             return View(vali.Single());
+        }
+
+        public ActionResult ValiIndex(int? page)
+        {
+
+            if (page == null) page = 1;
+            var Danhmuc = db.DANHMUCVALIs.ToList();
+            var Vali = db.VALIs.ToList();
+            List<VALI> Valitheodanhmuc = new List<VALI>();
+            foreach (var item in Danhmuc)
+            {
+                int sttitem1 = 0;
+                foreach (var item1 in Vali)
+                {
+                    if (item1.DANHMUCVALI.madanhmuc == item.madanhmuc)
+                    {
+                        sttitem1++;
+                        if (sttitem1 <= 3)
+                        {
+                            Valitheodanhmuc.Add(item1);
+                        }
+                    }
+                }
+            }
+            int pageSize = 12;
+            int pageNum = page ?? 1;
+            return View(Valitheodanhmuc.ToPagedList(pageNum, pageSize));
         }
     }
 }

@@ -103,6 +103,7 @@ namespace QLCuaHangVali.Controllers
                 {
                     // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
                     Session["TaiKhoanKH"] = ad.tenkhachhang;
+                    Session["KhachHangDangNhap"] = ad;
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng"; // Cho nhập lại một lần nữa bởi bì lần 1 k load
                     return PartialView();
                 }

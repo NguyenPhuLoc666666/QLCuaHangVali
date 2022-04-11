@@ -34,8 +34,26 @@ namespace QLCuaHangVali.Controllers
         public ActionResult MauSac()
         {
             ValiDBDataContext db = new ValiDBDataContext();
+            List<MAUSAC> mausacdangco = new List<MAUSAC>();
             var mauSac = db.MAUSACs.ToList();
-            return PartialView(mauSac);
+            var anhvali = db.ANHVALIs.ToList();
+
+            foreach(var ms in mauSac)
+            {
+                int stt = 0;
+                foreach (var anh in anhvali)
+                {
+                    if (anh.mamausac == ms.mamausac)
+                    {
+                        stt++;
+                        if (stt == 1)
+                        {
+                            mausacdangco.Add(ms);
+                        }
+                    }
+                }
+            }
+            return PartialView(mausacdangco);
         }
         //tim kiem theo mau sac
         public ActionResult MauSacTimKiem(int id)
@@ -45,5 +63,29 @@ namespace QLCuaHangVali.Controllers
             return View(listSP.OrderBy(p => p.VALI.tenvali));
         }
 
+        // Tìm kiếm theo thương hiệu 
+        public ActionResult ThuongHieu()
+        {
+            List<THUONGHIEU> thuonghieudangco = new List<THUONGHIEU>();
+            var thuonghieu = db.THUONGHIEUs.ToList();
+            var vali = db.VALIs.ToList();
+
+            foreach (var th in thuonghieu)
+            {
+                int stt = 0;
+                foreach (var vl in vali)
+                {
+                    if (th.mathuonghieu == vl.mathuonghieu)
+                    {
+                        stt++;
+                        if (stt == 1)
+                        {
+                            thuonghieudangco.Add(th);
+                        }
+                    }
+                }
+            }
+            return PartialView(thuonghieudangco);
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         {
             if (page == null) page = 1;
             var all_vl = (from vl in db.VALIs select vl).OrderBy( m => m.mavali);
-            int pageSize = 6;
+            int pageSize = 9;
             int pageNum = page ?? 1;
             return View(all_vl.ToPagedList(pageNum, pageSize));
         }
