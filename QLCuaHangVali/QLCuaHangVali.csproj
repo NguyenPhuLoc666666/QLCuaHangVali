@@ -2578,6 +2578,7 @@
     <Content Include="Views\TrangChu\ValiIndex.cshtml" />
     <Content Include="Views\TimKiem\ThuongHieu.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\NguoiDung\EditInfor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

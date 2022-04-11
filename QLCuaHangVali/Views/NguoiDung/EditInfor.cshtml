@@ -1,0 +1,133 @@
+﻿@model QLCuaHangVali.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "EditInfor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Chỉnh Sửa Thông Tin</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.makh)
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">
+                <input type="file" name="fileUpload" id="fileUpload" accept="image/*"
+                       style="display:none;" />
+                <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+            </label>
+            <div class="col-md-3" style="text-align: center">
+                @Html.EditorFor(model => model.anhdaidien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.anhdaidien, "", new { @class = "text-danger" })
+
+                <img src="~/Content/AnhKhachHang/@Model.anhdaidien" style="border-radius: 50%; height: 120px; width: 120px;" id="pictureUpload" />
+            </div>
+        </div>
+        <!--  Lam nut chon anh  -->
+        @section upload
+{
+            <script>
+            $(function () {
+                $('#btnUpload').click(function () {
+                    $('#fileUpload').trigger('click');
+                });
+            });
+            $('#fileUpload').change(function () {
+                if (window.FormData !== undefined) {
+                    var fileUpload = $('#fileUpload').get(0);
+                    var files = fileUpload.files;
+                    var formData = new FormData();
+                    formData.append('file', files[0]);
+
+                    $.ajax(
+                        {
+                            type: 'POST',
+                            url: '/NguoiDung/ProcessUpload',
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (urlImage) {
+
+                                $('#pictureUpload').attr('src', "/Content/AnhKhachHang/" +  urlImage);
+                                $('#anhdaidien').val(urlImage);
+                            },
+                            error: function (err) {
+                                alert('Error ', err.statusText);
+                            }
+                        });
+                }
+            });
+            </script>
+        }
+        <!--  End- Lam nut chon anh  -->
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">Tên khách hàng</label>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.tenkhachhang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tenkhachhang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">Số điện thoại</label>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.sodienthoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sodienthoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">Email</label>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">Địa chỉ</label>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+              <label class="col-md-5" style="text-align: right">Tên khách hàng</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <label class="col-md-5" style="text-align: right">Ngày sinh</label>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6" style="text-align: right">
+                <input type="submit" value="Cập nhật" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

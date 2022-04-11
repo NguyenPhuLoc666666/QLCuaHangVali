@@ -186,8 +186,8 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             {
                 return "";
             }
-            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
-            return "/Content/images/" + file.FileName;
+            file.SaveAs(Server.MapPath("~/Content/AnhVali/" + file.FileName));
+            return file.FileName;
         }
     }
 }

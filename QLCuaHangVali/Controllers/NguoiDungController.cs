@@ -104,6 +104,7 @@ namespace QLCuaHangVali.Controllers
                     // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
                     Session["TaiKhoanKH"] = ad.tenkhachhang;
                     Session["KhachHangDangNhap"] = ad;
+                    Session["MaKH"] = ad.makh;
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng"; // Cho nhập lại một lần nữa bởi bì lần 1 k load
                     return PartialView();
                 }
@@ -121,7 +122,62 @@ namespace QLCuaHangVali.Controllers
             Session["TaiKhoanKH"] = "";
             return RedirectToAction("Index", "TrangChu");
         }
+        //tai khoan khach hang
+        public ActionResult EditInfor(int id)
+        {
+            KHACHHANG find = data.KHACHHANGs.FirstOrDefault(m => m.makh == id);
+            if (find == null)
+                return HttpNotFound();
 
+            return View(find);
+        }
+        [HttpPost]
+        public ActionResult EditInfor(int id, FormCollection collection)
+        {
+            //id = Convert.ToInt32(Session["MaKH"]);
+            var th = data.KHACHHANGs.First(m => m.makh == id);
+            var tenkhachhang = collection["tenkhachhang"];
+            var sodienthoai = collection["sodienthoai"];
+            var email = collection["email"];
+            var diachi = collection["diachi"];
+            var ngaysinh = Convert.ToDateTime(collection["ngaysinh"]);
+            var anhdaidien = collection["anhdaidien"];
+
+
+
+            th.makh = id;
+            if (string.IsNullOrEmpty(tenkhachhang))
+            {
+                ViewData["Error"] = "Don't empty!";
+            }
+            else
+            {
+                th.tenkhachhang = tenkhachhang.ToString();
+                Session["TaiKhoanKH"] = th.tenkhachhang;
+                th.sodienthoai = sodienthoai.ToString();
+                th.email = email.ToString();
+                th.diachi = diachi.ToString();
+                th.ngaysinh = ngaysinh;
+                th.anhdaidien = anhdaidien;
+
+
+                UpdateModel(th);
+                data.SubmitChanges();
+                return RedirectToAction("Index", "TrangChu");
+            }
+            return this.EditInfor(id);
+        }
+
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            file.SaveAs(Server.MapPath("~/Content/AnhKhachHang/" + file.FileName));
+
+            return file.FileName;
+        }
 
 
     }

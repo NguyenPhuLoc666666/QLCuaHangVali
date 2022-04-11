@@ -5,32 +5,43 @@
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 @section header{
-    <h2>Details</h2>
+    <h2 style="text-align: center">Chi Tiết Đơn Hàng</h2>
 
     <div>
-        <h4>CHITIETDONHANG</h4>
+
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.soluong)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.soluong)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.gia)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.gia)
-            </dd>
+            <table class="table" border="1px" style="text-align: center">
+                <tr>
+                    <th>Tên khách hàng </th>
+                    <td> @Html.DisplayFor(model => model.DONDATHANG.KHACHHANG.tenkhachhang)</td>
+                </tr>
+                <tr>
+                    <th>Vali </th>
+                    <td> @Html.DisplayFor(model => model.VALI.tenvali)</td>
+                </tr>
+                <tr>
+                    <th>Số lượng mua </th>
+                    <td> @Html.DisplayFor(model => model.soluong)</td>
+                </tr>
+                <tr>
+                    <th>Ngày đặt hàng </th>
+                    <td> @Html.DisplayFor(model => model.DONDATHANG.ngaydat)</td>
+                </tr>
+                <tr>
+                    <th>Ngày giao hàng </th>
+                    <td> @Html.DisplayFor(model => model.DONDATHANG.ngaygiao)</td>
+                </tr>
+                <tr>
+                    <th>Tổng tiền </th>
+                    <td> @Html.DisplayFor(model => model.gia)</td>
+                </tr>
+            </table>
 
         </dl>
     </div>
     <p>
         @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Trở về", "Index")
     </p>
 }

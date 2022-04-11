@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="fa fa-close icon_user" aria-hidden="true"></span>
                             </a>
                             <a class="dropdown-item_user" href="#">Hồ Sơ</a>
-                            <a class="dropdown-item_user" href="#">Tài Khoản</a>
+                            <a class="dropdown-item_user" href="@Url.Action("EditInfor", "NguoiDung", new { id = Session["MaKH"] })">Tài Khoản</a>
                             <a class="dropdown-item_user" href="#">Cài đặt</a>
                             <a class="dropdown-item_user" href="@Url.Action("DangXuat", "NguoiDung")">Đăng Xuất</a>
                         </div>
@@ -1335,8 +1335,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @RenderSection("scripts", required: false)
 
+    @RenderSection("upload", required: false)
 
-    @*Scrip phần check out*@ 
+    @*Scrip phần check out*@
     <!-- easy-responsive-tabs -->
     <link rel="stylesheet" type="text/css" href="~/Public/homepage/css/easy-responsive-tabs.css " />
     <script src="~/Public/homepage/js/easyResponsiveTabs.js"></script>
@@ -1383,7 +1384,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!-- //credit-card -->
-
     <!-- start-smooth-scrolling -->
     <script>
         jQuery(document).ready(function ($) {

@@ -40,35 +40,31 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
             return View(find);
         }
         [HttpPost]
+        
         public ActionResult Edit(int id, FormCollection collection)
         {
-            var kh = db.DONDATHANGs.First(m => m.madonhang == id);
-            var makh = collection["makh"];
-            var mathanhtoan = collection["mathanhtoan"];
-            var ngaydat = collection["ngaydat"];
-            var ngaygiao = collection["ngaygiao"];
+            var th = db.DONDATHANGs.First(m => m.madonhang == id);
             var tinhtrang = Convert.ToBoolean(collection["tinhtrang"]);
+            var ngaygiao = Convert.ToDateTime(collection["ngaygiao"]);
             var ghichu = collection["ghichu"];
 
-            kh.makh = id;
-            if (string.IsNullOrEmpty(makh))
-            {
-                ViewData["Error"] = "Don't empty!";
-            }
-            else
-            {
-                kh.makh = int.Parse(makh.ToString());
-                kh.mathanhtoan = int.Parse(mathanhtoan.ToString());
-                kh.ngaydat = DateTime.Parse(ngaydat.ToString());
-                kh.ngaygiao = DateTime.Parse(ngaygiao.ToString());
-                kh.tinhtrang =  tinhtrang;
-                kh.ghichu = ghichu.ToString();
+            th.madonhang = id;
+            //if (string.IsNullOrEmpty(tinhtrang))
+            //{
+            //    ViewData["Error"] = "Don't empty!";
+            //}
+            // else
+            // {
+            th.tinhtrang = tinhtrang;
+            th.ngaygiao = ngaygiao;
+            th.ghichu = ghichu;
 
-                UpdateModel(kh);
-                db.SubmitChanges();
-                return RedirectToAction("Index");
-            }
-            return this.Edit(id);
+
+            UpdateModel(th);
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+            // }
+            //return this.Edit(id);
         }
         //-----------------------------------------
         public ActionResult Delete(int id)
