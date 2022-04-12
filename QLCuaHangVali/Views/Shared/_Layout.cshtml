@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <span class="fa fa-close icon_user" aria-hidden="true"></span>
                             </a>
                             <a class="dropdown-item_user" href="@Url.Action("EditInfor", "NguoiDung", new { id = Session["MaKH"] })">Hồ Sơ</a>
-                            <a class="dropdown-item_user" href="">Tài Khoản</a>
+                            <a class="dropdown-item_user" href="@Url.Action("ChangePass","NguoiDung", new { id = Session["MaKH"] })">Tài Khoản</a>
                             <a class="dropdown-item_user" href="#">Cài đặt</a>
                             <a class="dropdown-item_user" href="@Url.Action("DangXuat", "NguoiDung")">Đăng Xuất</a>
                         </div>
@@ -648,7 +648,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <a class="nav-stylehead" href="#">Cẩm nang du lịch</a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="#">Giới thiệu</a>
+                                    <a class="nav-stylehead" href="@Url.Action("GioiThieu", "TrangChu")">Giới thiệu</a>
                                 </li>
                                 @*<li class="dropdown">
                                         <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -1336,6 +1336,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     @RenderSection("scripts", required: false)
 
     @RenderSection("upload", required: false)
+    @RenderSection("sendEmail", required: false)
 
     @*Scrip phần check out*@
     <!-- easy-responsive-tabs -->

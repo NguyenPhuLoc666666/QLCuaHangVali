@@ -22,7 +22,7 @@
                         </p>
                        
                         <form action="" method="post">
-                            @using (Html.BeginForm("Index","TrangChu",FormMethod.Post))
+                            @using (Html.BeginForm("Index", "TrangChu", FormMethod.Post))
                             {
                                 <div class="styled-input agile-styled-input-top">
                                     <input type="text" placeholder="Nhập tài khoản" name="username" required="">
@@ -31,6 +31,12 @@
                                 <div class="styled-input">
                                     <input type="password" placeholder="Mật khẩu" name="password" required="">
                                 </div>
+                                <a href="@Url.Action("PassEmail", "NguoiDung" )" style="color: red">
+                                    Quên mật khẩu?
+                                </a>
+                                <a href="@Url.Action("XacThuc", "NguoiDung" )" style="color: red">
+                                    Xác thực tài khoản?
+                                </a>
                                 <h4 class="check_login1" style="color: red; font-size: 16px; text-align: center;">@ViewBag.Thongbao</h4>
                                 <p class="check_login3">@ViewData["Loi2"]</p>
                                 <input type="submit" value="Đăng Nhập" class="dangnhap">

@@ -69,10 +69,11 @@
         <div class="side-bar col-md-3">
             <div class="search-hotel">
                 <h3 class="agileits-sear-head">Tìm kiếm ở đây..</h3>
-                <form action="#" method="post">
-                    <input type="search" placeholder="Tên sản phẩm..." name="search" required="">
+                @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+                {
+                    <input name="sTuKhoa" type="search" placeholder="Tên sản phẩm..." required="">
                     <input type="submit" value=" ">
-                </form>
+                }
             </div>
             <!-- price range -->
             <div class="range">

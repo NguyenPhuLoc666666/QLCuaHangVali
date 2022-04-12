@@ -2,7 +2,7 @@
 @foreach (var item in Model)
 {
     <li>
-        <input type="checkbox" class="checked">
+        <input type="checkbox" class="checked" name="maThuongHieu" onchange="window.location.href = '@Url.Action("TimKiemThuongHieu","TimKiem", new { id = item.mathuonghieu})'">
         <span class="span">@item.tenthuonghieu</span>
     </li>
 }

@@ -1,0 +1,74 @@
+﻿@model QLCuaHangVali.Models.KHACHHANG
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Thông Tin Tài Khoản</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.makh)
+
+        @using (Html.BeginForm("ChangePass", "NguoiDung", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Tên khách hàng</label>
+                <div class="col-md-3">
+                    @Html.DisplayFor(model => model.tenkhachhang)
+                    @Html.ValidationMessageFor(model => model.tenkhachhang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Tên tài khoản</label>
+                <div class="col-md-3">
+
+                    @Html.DisplayFor(model => model.taikhoankh)
+                    @Html.ValidationMessageFor(model => model.taikhoankh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Mật Khẩu Cũ</label>
+                <div class="col-md-3">
+                    <input type="password" name="passCu" />
+                    @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Mật Khẩu Mới</label>
+                <div class="col-md-3">
+                    <input type="password" name="passMoi" />
+                    @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    <label class="col-md-5" style="text-align: right"></label>
+                    <div class="col-md-3" style="color: red">
+
+                        @Session["ThongBao"]
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6" style="text-align: right">
+                    <input type="submit" value="Cập nhật" class="btn btn-success" />
+                </div>
+            </div>
+        }
+
+    </div>
+
+}
+
+
+

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net.Mail;
+using System.Net;
 
 namespace QLCuaHangVali.Controllers
 {
@@ -17,6 +19,11 @@ namespace QLCuaHangVali.Controllers
         {
 
             return db.VALIs.OrderByDescending(a => a.ngaytao).Take(count).ToList();
+        }
+        //hàm trang giới thiệu
+        public ActionResult GioiThieu()
+        {
+            return View("GioiThieu");
         }
 
         public ActionResult Index(int? page)
@@ -113,9 +120,56 @@ namespace QLCuaHangVali.Controllers
                 db.LIENHEs.InsertOnSubmit(kh);
                 db.SubmitChanges();
                 ViewBag.Thongbao = "";
+                // code gưir email khi khách hàng liên hệ
+                try
+                {
+                    var senderemail = new MailAddress("01642027120q@gmail.com", "SHOP MIAAA");
+                    var receiveremail = new MailAddress(kh.email, "Reciver");
+                    var receiveremail1 = new MailAddress("01642027120q@gmail.com", "Reciver");
+
+                    var sub = "Cảm Ơn Sự Phản Hồi Của Bạn";
+                    var sub1 = "Phản Hồi Khách Hàng ";
+                    var body = "Trân trọng cảm ơn quý khách hàng đã đến và lựa chọn sử dụng dịch vụ của chúng tôi. Xin gửi lời cảm ơn chân thành và sâu sắc nhất đến quý khách hàng. ";
+                    body += "\nChúng tôi đã ghi nhận được sự phản hồi từ bạn!!!";
+                    var body1 = "Tên khách hàng: " + kh.tenkhachhang;
+                    body1 += "\nTiêu đề: " + kh.tieude;
+                    body1 += "\nNội dung: " + kh.noidung;
+
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderemail.Address, "AnhQuan23092001")
+                    };
+                    using (var mess = new MailMessage(senderemail, receiveremail)
+                    {
+                        Subject = sub,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+                    //
+                    using (var mess = new MailMessage(senderemail, receiveremail1)
+                    {
+                        Subject = sub1,
+                        Body = body1
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    ViewBag.Error = "Some Error";
+                }
                 return View();
             }
-            // code gưir email khi khách hàng liên hệ
+          
 
             return View();
         }

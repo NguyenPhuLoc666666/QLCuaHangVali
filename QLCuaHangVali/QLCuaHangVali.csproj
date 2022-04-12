@@ -2580,6 +2580,11 @@
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\NguoiDung\EditInfor.cshtml" />
     <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
+    <Content Include="Views\NguoiDung\ChangePass.cshtml" />
+    <Content Include="Views\TrangChu\GioiThieu.cshtml" />
+    <Content Include="Views\TimKiem\TimKiemThuongHieu.cshtml" />
+    <Content Include="Views\NguoiDung\PassEmail.cshtml" />
+    <Content Include="Views\NguoiDung\XacThuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

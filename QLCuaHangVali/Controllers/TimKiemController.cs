@@ -87,5 +87,12 @@ namespace QLCuaHangVali.Controllers
             }
             return PartialView(thuonghieudangco);
         }
+
+        public ActionResult TimKiemThuongHieu(int id)
+        {
+            ValiDBDataContext db = new ValiDBDataContext();
+            var listSP = db.VALIs.Where(p => p.THUONGHIEU.mathuonghieu == id).ToList();
+            return View(listSP.OrderBy(p => p.tenvali));
+        }
     }
 }

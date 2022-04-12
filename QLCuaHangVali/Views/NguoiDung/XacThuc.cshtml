@@ -1,0 +1,99 @@
+﻿@model QLCuaHangVali.Models.KHACHHANG
+@{
+    ViewBag.Title = "XacThuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Xác Thực Tài Khoản</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @using (Html.BeginForm("PassEmail", "NguoiDung", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Tài khoản </label>
+                <div class="col-md-3">
+                    <input type="text" name="taikhoan" required />
+                    @Html.ValidationMessageFor(model => model.taikhoankh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Vui lòng nhập email </label>
+                <div class="col-md-3">
+                    <input type="text" name="email" value="" id="emailUser" required /> <input type="button" name="name" value="Gửi mã" class="addtocart" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-5" style="text-align: right">Nhập mã OTP </label>
+                <div class="col-md-3">
+                    <input type="text" name="maOTP" required />
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6" style="text-align: right">
+                    <input type="submit" value="Xác nhận" class="btn btn-success" />
+                </div>
+            </div>
+        }
+
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @section sendEmail {
+        <script type="text/javascript">
+    $(function () {
+        $(".addtocart").click(function () {
+            var model = {};
+
+            model.email = $("#emailUser").val();
+
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SendEmail", "NguoiDung")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Vui lòng kiểm tra email',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thêm giỏ hàng thất bại \n Bạn cần đăng nhập',
+                        text: 'Vui lòng thử lại!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+            return false;
+        });
+    });
+        </script>
+    }
+}
+
+
