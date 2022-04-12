@@ -126,6 +126,8 @@ namespace QLCuaHangVali.Controllers
             var vali = from s in db.VALIs
                        where s.mavali == id
                        select s;
+            VALI vl = db.VALIs.FirstOrDefault(n => n.mavali == id);
+            Session["CapNhatSoLuong"] = vl.soluongton;
             return View(vali.Single());
         }
 

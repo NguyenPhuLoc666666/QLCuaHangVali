@@ -176,11 +176,26 @@
                 </p>
             </div>
             <div style="display: flex; align-items: center" class="input-group mb-3 input-spinner">
-                <span>Số lượng:</span>
-                <input style="width: 100px; margin-left:10px" type="number"  id="iqQuantity" class="form-control" name="name" value="1" />
-                <p style="color: black; margin-left:20px"> @Html.DisplayFor(model => model.soluongton) Số lượng có sẵn </p>
-            </div>
+                <span style="margin-right: 10px">Số lượng:</span>
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px; display: flex; flex-direction: row">
+                    <button class="btn btn-primary px-3 me-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <i class="fa fa-minus"></i>
+                    </button>
 
+                    <input style="width: 100px; margin-left:10px" type="number" id="iqQuantity" class="form-conl" name="name" value="1" />
+                    <button class="btn btn-primary px-3 ms-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <!-- Quantity -->
+                @*<input style="width: 100px; margin-left:10px" type="number" id="iqQuantity" class="form-control" name="name" value="1" />*@
+            <p id="Soluongton" style="color: black; margin-left:20px">@Session["CapNhatSoLuong"] 
+             </p>
+            <span> Số lượng có sẵn </span>
+            </div>
             <div class="occasion-cart">
             </div>
             <div class="form-group col-md">
@@ -281,7 +296,7 @@
                                         <input type="submit" name="submit" value="Thêm vào giỏ hàng" class="button" />
                                     </fieldset>
                                 </form>
-                            </div>   
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -532,11 +547,21 @@
     <script type="text/javascript">
     $(function () {
         $("#addtocart").click(function () {
-            var model = {};
-            //lấy id sản phẩm
-            model.Id = @Html.DisplayFor(model => model.mavali);
-            // lấy số lượng đặt hàng
-            model.Quantity = $("#iqQuantity").val();
+            var soluongton = @Html.DisplayFor(model => model.soluongton);
+            var soluongmua = $("#iqQuantity").val();
+            var thongbaoloi = "Bạn cần đăng nhập";
+
+            if (soluongmua > soluongton) {
+                thongbaoloi = "Số lượng tồn không đủ";
+            } else if (soluongmua <= 0) {
+                thongbaoloi = "Số lượng không đúng";
+            } else {
+                 var model = {};
+                //lấy id sản phẩm
+                model.Id = @Html.DisplayFor(model => model.mavali);
+                // lấy số lượng đặt hàng
+                model.Quantity = $("#iqQuantity").val();
+            }
             debugger;
             $.ajax({
                 type: "POST",
@@ -546,6 +571,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $('#CartCount').text(@Session["Count"] + 1);
+                    $('#Soluongton').text(@Session["CapNhatSoLuong"] - $("#iqQuantity").val());
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -557,15 +583,31 @@
                 error: function () {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Thêm giỏ hàng thất bại \n Bạn cần đăng nhập',
+                        title: thongbaoloi,
                         text: 'Vui lòng thử lại!',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 2500
                     })
-                }
+                },
             });
             return false;
         });
     });
     </script>
+
 }
+
+<script src="~/Public/homepage/js/jquery-2.1.4.min.js"></script>
+<script>
+
+    @*$(document).ready(function (c) {
+        $('#iqQuantity').on('click', function (c) {
+            //alert(21);
+            var soluongton = @Html.DisplayFor(model => model.soluongton);
+            var soluongmua = $("#iqQuantity").val();
+            if (soluongmua > soluong) {
+
+            }
+        });
+    })*@;
+</script>

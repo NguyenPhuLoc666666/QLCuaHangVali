@@ -30,7 +30,8 @@
                             <th>Sản Phẩm</th>
                             <th>Số Lượng</th>
                             <th>Tên sản Phẩm</th>
-                            <th>Giá</th>
+                            <th>Đơn giá</th>
+                            <th>Tổng tiền</th>
                             <th>Xóa SP</th>
                         </tr>
                     </thead>
@@ -38,7 +39,7 @@
                         @{int stt = 0;}
                         @foreach (var item in Model)
                         {
-                            {stt++;}
+                            { stt++; }
                             <tr class="rem1">
                                 <td class="invert">@stt</td>
                                 <td class="invert-image">
@@ -58,7 +59,8 @@
                                     </div>
                                 </td>
                                 <td class="invert">@item.itenvali</td>
-                                <td class="invert">@item.dDongia VNĐ</td>
+                                <td>@String.Format("{0:0,0}", item.dDongia)</td>
+                                <td class="invert">@String.Format("{0:0,0}", item.dThanhtien)</td>
                                 <td class="invert">
                                     <div class="rem">
                                         <div class="close1"> </div>
@@ -70,33 +72,38 @@
                 </table>
             </div>
         </div>
-        <div>
-            @*// Viết tiếp code tông tiền*@
+        <a style="font-size: 16px; margin-top: 10px; float: right" class="btn btn-danger btn-sm me-1 mb-2"
+                title="Remove item">
+            <i class="fa fa-trash"></i>
+            <span>Xóa Tất cả</span>
+        </a>
+        <div style="margin-top: 20px">
+            <div>
+                <div style="margin-bottom: 6px">
+                    Tổng số lượng sản phẩm : @stt
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body p-4 d-flex flex-row">
+                        <span class="form-label">Shopee Voucher</span>
+                        <div class="form-outline flex-fill" style="display: flex">
+                            <input style="width: 200px" type="text" id="form1" class="form-control form-control-lg" />
+                            <a style="color: #ffa900; width: 100px; margin-left: 10px; border: 2px #ffa900 solid;" display: flex"; height: 40px" class="btn" href="#">Áp dụng</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="color: #ff5722; font-size: 18px; margin-bottom: 10px">
+                    Tổng thanh toán: @ViewBag.Tongtien
+                </div>
+            </div>
+            <div class="checkout_vali">
+                <a style="background-color: #ff5722; width: 200px; height: 40px" class="btn btn-success" href="@Url.Action("DatHang","GioHang")">Mua Ngay</a>
+            </div>
         </div>
-        <div class="checkout_vali">
-            <a class="btn btn-check" href="@Url.Action("DatHang","GioHang")">Thanh toán</a>
-        </div>
+
     </div>
 </div>
 <script src="~/Public/homepage/js/jquery-2.1.4.min.js"></script>
 <script src="~/Public/homepage/js/jquery.magnific-popup.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.popup-with-zoom-anim').magnificPopup({
-            type: 'inline',
-            fixedContentPos: false,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            mainClass: 'my-mfp-zoom-in'
-        });
-
-    });
-</script>
-<script src="~/Public/homepage/js/minicart.js"></script>
 <!-- //cart-js -->
 <!--quantity-->
 <script>
@@ -114,31 +121,13 @@
 </script>
 <!--quantity-->
 <script>
-		$(document).ready(function (c) {
-			$('.close1').on('click', function (c) {
-				$('.rem1').fadeOut('slow', function (c) {
-					$('.rem1').remove();
-				});
-			});
-		});
-</script>
-<script>
-		$(document).ready(function (c) {
-			$('.close2').on('click', function (c) {
-				$('.rem2').fadeOut('slow', function (c) {
-					$('.rem2').remove();
-				});
-			});
-		});
-</script>
-<script>
-		$(document).ready(function (c) {
-			$('.close3').on('click', function (c) {
-				$('.rem3').fadeOut('slow', function (c) {
-					$('.rem3').remove();
-				});
-			});
-		});
+		//$(document).ready(function (c) {
+		//	$('.close1').on('click', function (c) {
+		//		$('.rem1').fadeOut('slow', function (c) {
+		//			$('.rem1').remove();
+		//		});
+		//	});
+		//});
 </script>
 <!--//quantity-->
 <script src="~/Public/homepage/js/bootstrap.js"></script>

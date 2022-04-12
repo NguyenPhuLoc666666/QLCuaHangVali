@@ -30,7 +30,10 @@ namespace QLCuaHangVali.Controllers
             List<GioHang> lstGiohang = Laygiohang();
             // Kiểm tra vali này tồn tại trong Session["Giohang"] chưa?
             GioHang sanpham = lstGiohang.Find(n => n.imavali == id);
-            //Session["Count"] = 1;
+            VALI validb = db.VALIs.FirstOrDefault(n => n.mavali == id);
+            validb.soluongton = validb.soluongton - Quantity;
+            UpdateModel(validb);
+            db.SubmitChanges();
             if (sanpham == null)
             {
                 sanpham = new GioHang(id);
@@ -158,34 +161,34 @@ namespace QLCuaHangVali.Controllers
         public ActionResult DatHang(FormCollection collection)
         {
             //Them Don hang
-            DONDATHANG ddh = new DONDATHANG();
-            KHACHHANG kh = (KHACHHANG)Session["KhachHangDangNhap"];
-            List<GioHang> gh = Laygiohang();
-            ddh.makh = kh.makh;
-            ddh.ngaydat = DateTime.Now;
-            var ngaygiao = String.Format("{0:mm/dd/yyyy}", collection["Ngaygiao"]);
-            ddh.ngaygiao = DateTime.Parse(ngaygiao);
-            if (ddh.ngaygiao < ddh.ngaydat.Value)
-            {
-                Session["Message"] = "Ngày giao hàng phải lớn hơn hoặc bằng ngày hiện tại";
-                return RedirectToAction("DatHang");
-            }
-            ddh.tinhtrang = false;
-            //ddh.mathanhtoan = false;
-            db.DONDATHANGs.InsertOnSubmit(ddh);
-            db.SubmitChanges();
-            //Them chi tiet don hang
-            foreach (var item in gh)
-            {
-                CHITIETDONHANG ctdh = new CHITIETDONHANG();
-                ctdh.madonhang = ddh.madonhang;
-                ctdh.mavali = item.imavali;
-                ctdh.soluong = item.isoluong;
-                db.CHITIETDONHANGs.InsertOnSubmit(ctdh);
-            }
-            db.SubmitChanges();
-            Session["Giohang"] = null;
-            return RedirectToAction("Xacnhandonhang", "Giohang");
+            //DONDATHANG ddh = new DONDATHANG();
+            //KHACHHANG kh = (KHACHHANG)Session["KhachHangDangNhap"];
+            //List<GioHang> gh = Laygiohang();
+            //ddh.makh = kh.makh;
+            //ddh.ngaydat = DateTime.Now;
+            //var ngaygiao = String.Format("{0:mm/dd/yyyy}", collection["Ngaygiao"]);
+            //ddh.ngaygiao = DateTime.Parse(ngaygiao);
+            //if (ddh.ngaygiao < ddh.ngaydat.Value)
+            //{
+            //    Session["Message"] = "Ngày giao hàng phải lớn hơn hoặc bằng ngày hiện tại";
+            //    return RedirectToAction("DatHang");
+            //}
+            //ddh.tinhtrang = false;
+            ////ddh.mathanhtoan = false;
+            //db.DONDATHANGs.InsertOnSubmit(ddh);
+            //db.SubmitChanges();
+            ////Them chi tiet don hang
+            //foreach (var item in gh)
+            //{
+            //    CHITIETDONHANG ctdh = new CHITIETDONHANG();
+            //    ctdh.madonhang = ddh.madonhang;
+            //    ctdh.mavali = item.imavali;
+            //    ctdh.soluong = item.isoluong;
+            //    db.CHITIETDONHANGs.InsertOnSubmit(ctdh);
+            //}
+            //db.SubmitChanges();
+            //Session["Giohang"] = null;
+            return RedirectToAction("Xacnhandonhang", " GioHang");
         }
 
         // Xác nhận đơn hàng
