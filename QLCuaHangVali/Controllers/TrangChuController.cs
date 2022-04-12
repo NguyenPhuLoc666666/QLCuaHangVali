@@ -115,6 +115,8 @@ namespace QLCuaHangVali.Controllers
                 ViewBag.Thongbao = "";
                 return View();
             }
+            // code gưir email khi khách hàng liên hệ
+
             return View();
         }
 
