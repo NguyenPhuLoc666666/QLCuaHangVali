@@ -26,6 +26,8 @@ namespace QLCuaHangVali
             Session["KhachHangDangNhap"] = "";
             Session["CapNhatSoLuong"] = "";
             Session["XacThuc"] = "";
+            Session["TongTienGioHang"] = "";
+            Session["AnhVali"] = "";
         }
     }
 }

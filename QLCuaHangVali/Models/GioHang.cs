@@ -11,10 +11,11 @@ namespace QLCuaHangVali.Models
         public int imavali { set; get; }
         public string itenvali { set; get; }
         public string ianhvali { set; get; }
-        public int masize { set; get; }
+        public String tensize { set; get; }
         public int isoluong { set; get; }
         public int soluongton { set; get; }
         public double dDongia { get; set; }
+        public String mausac { get; set; }
         public double dThanhtien
         {
             get { return isoluong * dDongia; }
@@ -28,6 +29,9 @@ namespace QLCuaHangVali.Models
             ianhvali = vali.anhvali;
             dDongia = double.Parse(vali.gia.ToString());
             isoluong = 1;
+            tensize = vali.SIZEVALI.tensize;
+            ANHVALI avali = db.ANHVALIs.FirstOrDefault(n => n.VALI.tenvali == vali.tenvali && n.mavali == id);
+            mausac = avali.MAUSAC.tenmausac;
         }
     }
 }
