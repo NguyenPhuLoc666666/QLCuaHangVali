@@ -33,8 +33,16 @@
                     <td> @Html.DisplayFor(model => model.DONDATHANG.ngaygiao)</td>
                 </tr>
                 <tr>
-                    <th>Tổng tiền </th>
+                    <th>Đơn giá </th>
                     <td> @Html.DisplayFor(model => model.gia)</td>
+                </tr>
+                <tr>
+                    <th>Tổng tiền </th>
+                    @{var dongia = Html.DisplayFor(model => model.gia).ToString();
+                        var soluong = Html.DisplayFor(model => model.soluong).ToString();
+                        decimal tongtien = Convert.ToDecimal(dongia) * Convert.ToDecimal(soluong);
+                    }
+                <td> @tongtien</td>
                 </tr>
             </table>
 

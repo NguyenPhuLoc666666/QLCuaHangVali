@@ -36,10 +36,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @{int stt = 0;}
+                        @{int stt = 0; var sl = 0;}
                         @foreach (var item in Model)
                         {
-                            { stt++; }
+                            { stt++; sl = @item.isoluong; }
                             <tr class="rem1">
                                 <td class="invert">@stt</td>
                                 <td class="invert-image">
@@ -52,7 +52,7 @@
                                         <div class="quantity-select">
                                             <div class="entry value-minus">&nbsp;</div>
                                             <div class="entry value">
-                                                <span>@item.isoluong</span>
+                                                <span class="Soluong">@item.isoluong</span>
                                             </div>
                                             <div class="entry value-plus active">&nbsp;</div>
                                         </div>
@@ -63,7 +63,8 @@
                                 <td class="invert">@String.Format("{0:0,0}", item.dThanhtien)</td>
                                 <td class="invert">
                                     <div class="rem">
-                                        <div class="close1"> </div>
+                                        <a href="@Url.Action("XoaGiohang","GioHang", new {imavali = item.imavali})"><div class="close1"> </div></a>
+                                   
                                     </div>
                                 </td>
                             </tr>
@@ -72,8 +73,8 @@
                 </table>
             </div>
         </div>
-        <a style="font-size: 16px; margin-top: 10px; float: right" class="btn btn-danger btn-sm me-1 mb-2"
-                title="Remove item">
+        <a href="@Url.Action("Xoatatcagiohang","GioHang")"  style="font-size: 16px; margin-top: 10px; float: right" class="btn btn-danger btn-sm me-1 mb-2"
+           title="Remove item">
             <i class="fa fa-trash"></i>
             <span>Xóa Tất cả</span>
         </a>
@@ -107,27 +108,75 @@
 <!-- //cart-js -->
 <!--quantity-->
 <script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
 
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-		});
+
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+
+    $('.btn-danger').on('click', function () {
+        alert("Xóa giỏ hành thành công !")
+     
+    });
 </script>
 <!--quantity-->
-<script>
-		//$(document).ready(function (c) {
-		//	$('.close1').on('click', function (c) {
-		//		$('.rem1').fadeOut('slow', function (c) {
-		//			$('.rem1').remove();
-		//		});
-		//	});
-		//});
-</script>
 <!--//quantity-->
 <script src="~/Public/homepage/js/bootstrap.js"></script>
+
+@section scripts {
+    <script type="text/javascript">
+    $(function () {
+        $(".value-plus").click(function () {
+
+            //alert(123);
+            var model = {};
+            //lấy id sản phẩm
+            model.Name = $(".invert").text();
+            // lấy số lượng đặt hàng
+            model.Quantity = $(".Soluong").val
+      
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CapnhatGiohang", "GioHang")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    @*$('#CartCount').text(@Session["Count"] + 1);
+                    $('#Soluongton').text(@Session["CapNhatSoLuong"] - $("#iqQuantity").val());*@
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Thêm vào giỏ hàng thành công',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: thongbaoloi,
+                        text: 'Vui lòng thử lại!',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                },
+            });
+            return false;
+        });
+    });
+    </script>
+
+
+
+
+}

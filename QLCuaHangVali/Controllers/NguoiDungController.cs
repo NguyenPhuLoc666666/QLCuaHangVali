@@ -123,7 +123,11 @@ namespace QLCuaHangVali.Controllers
         public ActionResult DangXuat()
         {
             Session["TaiKhoanKH"] = "";
-            @Session["avata"] = "";
+            Session["avata"] = "";
+            Session["KhachHangDangNhap"] = "";
+            Session["count"] = "0";
+            Session["MaKH"] = "";
+            Session["email"] = "";
             return RedirectToAction("Index", "TrangChu");
         }
         //tai khoan khach hang

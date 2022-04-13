@@ -93,15 +93,19 @@
 
 
             </table>
-            
 
 
         </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+            <div style="text-align: right">
+                @Html.ActionLink("Quay lại", "Index")
+            </div>}
     </div>
-    <p>
-        @Html.ActionLink("Xóa sản phẩm", "Delete", new { id = Model.mavali }) |
-        @Html.ActionLink("Quay về", "Index")
-    </p>
 
 }

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -105,6 +107,7 @@ namespace QLCuaHangVali.Controllers
             if (sanpham != null)
             {
                 lstGiohang.RemoveAll(n => n.imavali == imavali);
+                Session["count"] = lstGiohang.Count - 1;
                 return RedirectToAction("GioHang");
             }
 
@@ -116,24 +119,26 @@ namespace QLCuaHangVali.Controllers
             return RedirectToAction("GioHang");
         }
 
-        public ActionResult CapnhatGiohang(int iMaSP, FormCollection f)
+        public ActionResult CapnhatGiohang(String Name,  int Quantity)
         {
             // lấy giỏ hàng từ Session
             List<GioHang> lstGiohang = Laygiohang();
             // Kiểm tra sách có trong Session["Giohang]
-            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.imavali == iMaSP);
+            GioHang sanpham = lstGiohang.SingleOrDefault(n => n.itenvali == Name);
             // nếu tồn tại thì cho sử số lượng
             if (sanpham != null)
             {
-                sanpham.isoluong = int.Parse(f["txtSoluong"].ToString());
+                sanpham.isoluong = Quantity;
             }
-            return RedirectToAction("Giohang");
+            //return RedirectToAction("Giohang");
+            return Json(new { Message = "Thành công", JsonRequestBehavior.AllowGet }); 
         }
 
         public ActionResult Xoatatcagiohang()
         {
             // lấy giỏ hàng từ Session
             List<GioHang> lstGiohang = Laygiohang();
+            Session["count"] = "0";
             lstGiohang.Clear();
             return RedirectToAction("Index", "TrangChu");
         }
@@ -209,12 +214,54 @@ namespace QLCuaHangVali.Controllers
                 ctdh.madonhang = ddh.madonhang;
                 ctdh.mavali = item.imavali;
                 ctdh.soluong = item.isoluong;
-                ctdh.gia = Convert.ToInt32(item.dThanhtien);
+                ctdh.gia = Convert.ToInt32(item.dDongia);
                 db.CHITIETDONHANGs.InsertOnSubmit(ctdh);
             }
             db.SubmitChanges();
             Session["Giohang"] = null;
             Session["count"] = "0";
+
+            try
+            {
+                var senderemail = new MailAddress("01642027120q@gmail.com", "SHOP MIAAA");
+                var receiveremail = new MailAddress(kh.email, "Reciver");
+
+
+                var sub = "Xác Nhận Đơn Hàng";
+
+                var body = "Tên khách hàng: " + kh.tenkhachhang;
+                body += "\nNgày đặt: " + ddh.ngaydat;
+                body += "\nNgày giao: " + ddh.ngaygiao;
+                body += "\nTrân trọng cảm ơn quý khách hàng đã đến và lựa chọn sử dụng dịch vụ của chúng tôi.  ";
+                body += "\nXin gửi lời cảm ơn chân thành và sâu sắc nhất đến quý khách hàng.";
+
+
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderemail.Address, "AnhQuan23092001")
+                };
+                using (var mess = new MailMessage(senderemail, receiveremail)
+                {
+                    Subject = sub,
+                    Body = body
+                })
+                {
+                    smtp.Send(mess);
+                }
+
+
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Some Error";
+            }
+
             return View();
         }
     }

@@ -1,8 +1,10 @@
-﻿
+﻿@using QLCuaHangVali.Models
+@model List<GioHang>
 @{
     ViewBag.Title = "Xacnhandonhang";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -211,7 +213,7 @@
                 <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
             </div>
             <div style=" margin-left: 30px">
-                    <h2 style="font-size: 20px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"> Cảm ơn bạn đã đặt hàng của chúng tôi! </h2>
+                <h2 style="font-size: 20px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"> Cảm ơn bạn đã đặt hàng của chúng tôi! </h2>
             </div>
             <div class="info">
                 <div class="row">
@@ -221,12 +223,15 @@
             </div>
             <div class="pricing">
                 <div class="row" style=" border-bottom: 1px solid #ccc">
-                    <div class="col-9"> <span id="name">Tên sản phẩm</span> </div>
-                    <div class="col-3"> <span id="price">Giá tiền: 1,000,000 VNĐ</span> </div>
+                    @*@foreach( var item in Model) { 
+                    }*@
+                    <div class="col-9"> <span id="name">Vali Pisani Skyle CD_20 SIZE S </span> </div>
+
+                    <div class="col-3">Tiền sản phẩm: <span id="price">@String.Format("{0:0,0}", @Session["TongTienGioHang"])VNĐ</span> </div>
                 </div>
                 <div class="row" style="display: flex">
                     <div class="col-9"> <span id="name">Vourcher Khuyễn Mãi: </span> </div>
-                    <div class="col-3"> <span style="margin-left: 6px" id="price"> -300,000 VNĐ</span> </div>
+                    <div class="col-3"> <span style="margin-left: 6px" id="price"> -400,000 VNĐ</span> </div>
                 </div>
                 <div class="row" style="display: flex">
                     <div class="col-9"> <span id="name">Phí giao hàng: </span> </div>
@@ -235,7 +240,7 @@
 
                 <div class="row">
                     <div class="col-9"></div>
-                    <div class="col-3">Tổng tiền: <big style="color: #ff5722">1,0000,000 VNĐ</big></div>
+                    <div class="col-3">Tổng tiền: <big style="color: #ff5722">@String.Format("{0:0,0}", @Session["TongTienThanhToan"])VNĐ</big></div>
                 </div>
             </div>
             <div class="tracking">
@@ -257,5 +262,5 @@
             </div>
         </div>
     </body>
-   
+
 </head>

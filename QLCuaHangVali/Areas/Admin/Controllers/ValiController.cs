@@ -26,10 +26,11 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         public ActionResult Index(int ? page)
         {
             if (page == null) page = 1;
-            var all_vl = (from vl in db.VALIs select vl).OrderBy( m => m.mavali);
+            //var all_vl = (from vl in db.VALIs select vl).OrderBy( m => m.mavali);
+            var all_vali = db.VALIs.Where(p => p.trangthai == true).OrderBy(p => p.mavali);
             int pageSize = 9;
             int pageNum = page ?? 1;
-            return View(all_vl.ToPagedList(pageNum, pageSize));
+            return View(all_vali.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Details(int id)
@@ -166,7 +167,7 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         //-----------------------------------------
         public ActionResult Delete(int id)
         {
-            VALI find = db.VALIs.FirstOrDefault(m => m.mavali == id);
+            VALI find = db.VALIs.FirstOrDefault(m => m.mavali == id && m.trangthai == true);
             if (find == null)
                 return HttpNotFound();
             return View(find);
@@ -174,8 +175,11 @@ namespace QLCuaHangVali.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            var Del_vl = db.VALIs.Where(m => m.mavali == id).First();
-            db.VALIs.DeleteOnSubmit(Del_vl);
+            var Del_vl = db.VALIs.Where(m => m.mavali == id && m.trangthai == true).First();
+            if(Del_vl != null)
+            {
+                Del_vl.trangthai = false;
+            }
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
