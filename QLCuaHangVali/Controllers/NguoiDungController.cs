@@ -106,6 +106,7 @@ namespace QLCuaHangVali.Controllers
                     // ViewBag.Thongbao = " Chúc mừng đăng nhập thành công";
                     Session["TaiKhoanKH"] = ad.tenkhachhang;
                     Session["KhachHangDangNhap"] = ad;
+                    Session["avata"] = ad.anhdaidien;
                     Session["MaKH"] = ad.makh;
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng"; // Cho nhập lại một lần nữa bởi bì lần 1 k load
                     return PartialView();
@@ -122,6 +123,7 @@ namespace QLCuaHangVali.Controllers
         public ActionResult DangXuat()
         {
             Session["TaiKhoanKH"] = "";
+            @Session["avata"] = "";
             return RedirectToAction("Index", "TrangChu");
         }
         //tai khoan khach hang

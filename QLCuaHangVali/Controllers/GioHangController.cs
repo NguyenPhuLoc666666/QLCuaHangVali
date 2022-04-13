@@ -191,6 +191,30 @@ namespace QLCuaHangVali.Controllers
         // Xác nhận đơn hàng
         public ActionResult Xacnhandonhang()
         {
+            //Them Don hang
+            DONDATHANG ddh = new DONDATHANG();
+            KHACHHANG kh = (KHACHHANG)Session["KhachHangDangNhap"];
+            List<GioHang> gh = Laygiohang();
+            ddh.makh = kh.makh;
+            ddh.ngaydat = DateTime.Now;
+            ddh.ngaygiao = DateTime.Now.AddDays(5);
+            ddh.tinhtrang = false;
+            //ddh.mathanhtoan = false;
+            db.DONDATHANGs.InsertOnSubmit(ddh);
+            db.SubmitChanges();
+            //Them chi tiet don hang
+            foreach (var item in gh)
+            {
+                CHITIETDONHANG ctdh = new CHITIETDONHANG();
+                ctdh.madonhang = ddh.madonhang;
+                ctdh.mavali = item.imavali;
+                ctdh.soluong = item.isoluong;
+                ctdh.gia = Convert.ToInt32(item.dThanhtien);
+                db.CHITIETDONHANGs.InsertOnSubmit(ctdh);
+            }
+            db.SubmitChanges();
+            Session["Giohang"] = null;
+            Session["count"] = "0";
             return View();
         }
     }

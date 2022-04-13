@@ -85,7 +85,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </li>
                     <li class="UserName_drop">
                         <a class="info_username">
-                            <img style="background-image: url('https://anhtuana2k422001.github.io/zingmp3/assets/img/imgage_interface.jpg'); width: 36px; height: 36px; border-radius: 50%; background-size: cover; float: left;" />
+                            @{
+                                if (Session["TaiKhoanKH"].Equals(""))
+                                {
+                                    <img style="background-image: url('https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg'); width: 36px; height: 36px; border-radius: 50%; background-size: cover; float: left;" />
+                                }
+                                else
+                                {
+                                    <img style="background-image: url('../Content/AnhKhachHang/@Session["avata"]'); width: 36px; height: 36px; border-radius: 50%; background-size: cover; float: left;" />
+                                }
+                            }
                             <span style="font-size: 14px" class="name_user" aria-hidden="true">@Session["TaiKhoanKH"]</span>
                         </a>
                         <div class="dropdown_user">
