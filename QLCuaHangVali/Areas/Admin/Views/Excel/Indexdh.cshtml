@@ -1,0 +1,18 @@
+﻿@model String
+@{
+    ViewBag.Title = "Indexdh";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@section header{
+    <h2 style="text-align:center">Export excel ĐƠN ĐẶT HÀNG</h2>
+    <form action="" method="post">
+        <button class="btn btn-primary" type="submit">
+            Xuất file Excel Đơn Đặt Hàng
+        </button>
+        <p>
+            Xuất file và lưu dưới thư mục
+        </p>
+        <i>@ViewBag.messagedh</i>
+    </form>
+}
+
