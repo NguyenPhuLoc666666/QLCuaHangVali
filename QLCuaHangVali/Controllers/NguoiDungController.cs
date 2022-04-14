@@ -68,7 +68,7 @@ namespace QLCuaHangVali.Controllers
                 data.KHACHHANGs.InsertOnSubmit(kh);
                 data.SubmitChanges();
                 ViewBag.Thongbao = "";
-                return PartialView("DangNhap");
+                Session["KiemTraDK"] = "true";
             }
             return PartialView();
         }
@@ -150,8 +150,6 @@ namespace QLCuaHangVali.Controllers
             var diachi = collection["diachi"];
             var ngaysinh = Convert.ToDateTime(collection["ngaysinh"]);
             var anhdaidien = collection["anhdaidien"];
-
-
 
             th.makh = id;
             if (string.IsNullOrEmpty(tenkhachhang))

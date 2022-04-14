@@ -47,18 +47,20 @@
             <!-- //food preference -->
             <!--mau sac-->
             <div class="left-side">
-
                 <h3 class="agileits-sear-head">Màu Sắc</h3>
-
                 <ul>
-
-
                     @Html.Action("MauSac", "TimKiem")
-
                 </ul>
-
             </div>
             <!--end mau sac-->
+            <!-- cuisine -->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Thương hiệu</h3>
+                <ul>
+                    @Html.Action("ThuongHieu", "TimKiem")
+                </ul>
+            </div>
+            <!-- //cuisine -->
             <!-- discounts -->
             <div class="left-side">
                 <h3 class="agileits-sear-head">Khuyến Mãi</h3>
@@ -147,14 +149,6 @@
                 </ul>
             </div>
             <!-- //reviews -->
-            <!-- cuisine -->
-            <div class="left-side">
-                <h3 class="agileits-sear-head">Thương hiệu</h3>
-                <ul>
-                    @Html.Action("ThuongHieu", "TimKiem")
-                </ul>
-            </div>
-            <!-- //cuisine -->
             <!-- deals -->
             <div class="deal-leftmk left-side">
                 <h3 class="agileits-sear-head">Vali yêu thích</h3>

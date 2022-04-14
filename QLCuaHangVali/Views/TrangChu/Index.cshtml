@@ -76,16 +76,16 @@
                 }
             </div>
             <!-- price range -->
-            <div class="range">
-                <h3 class="agileits-sear-head">Phạm vi giá</h3>
-                <ul class="dropdown-menu6">
-                    <li>
+            @*<div class="range">
+            <h3 class="agileits-sear-head">Phạm vi giá</h3>
+            <ul class="dropdown-menu6">
+                <li>
 
-                        <div id="slider-range"></div>
-                        <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-                    </li>
-                </ul>
-            </div>
+                    <div id="slider-range"></div>
+                    <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                </li>
+            </ul>
+        </div>*@
             <!-- //price range -->
             <!-- food preference -->
             <div class="left-side">
@@ -102,6 +102,14 @@
                 </ul>
             </div>
             <!-- //food preference -->
+            <!-- cuisine -->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Thương hiệu</h3>
+                <ul>
+                    @Html.Action("ThuongHieu", "TimKiem")
+                </ul>
+            </div>
+            <!-- //cuisine -->
             <!-- discounts -->
             <div class="left-side">
                 <h3 class="agileits-sear-head">Khuyến Mãi</h3>
@@ -190,14 +198,6 @@
                 </ul>
             </div>
             <!-- //reviews -->
-            <!-- cuisine -->
-            <div class="left-side">
-                <h3 class="agileits-sear-head">Thương hiệu</h3>
-                <ul>
-                    @Html.Action("ThuongHieu", "TimKiem")
-                </ul>
-            </div>
-            <!-- //cuisine -->
             <!-- deals -->
             <!-- //tittle heading -->
             @{
